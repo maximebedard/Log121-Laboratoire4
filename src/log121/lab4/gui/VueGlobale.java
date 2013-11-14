@@ -1,6 +1,6 @@
 package log121.lab4.gui;
 
-import log121.lab4.Vue;
+import log121.lab4.api.Vue;
 
 public class VueGlobale extends Vue {
 
