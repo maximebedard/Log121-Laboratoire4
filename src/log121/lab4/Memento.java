@@ -2,14 +2,25 @@ package log121.lab4;
 
 public class Memento<T> {
 
-	private final Etat<T> state;
+	/**
+	 * Etat immuable du memento
+	 */
+	private final T etat;
 
-	public Memento(Etat<T> state) {
-		this.state = state;
+	/**
+	 * Constructeur d'un memento immuable
+	 * @param etat
+	 */
+	public Memento(T etat) {
+		this.etat = etat;
 	}
 	
-	public Etat<T> getState() {
-		return state;
+	/**
+	 * Retourne l'état du memento
+	 * @return
+	 */
+	public T getEtat() {
+		return etat;
 	}
-
+	
 }

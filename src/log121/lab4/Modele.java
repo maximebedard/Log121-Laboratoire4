@@ -1,24 +1,29 @@
-
 package log121.lab4;
 
 import java.util.Observable;
 
-public abstract class Modele<T> extends Observable{
-
-	private Etat<T> state;
+public abstract class Modele<T> extends Observable implements IOriginateur<T> {
 	
-	public abstract Memento<T> sauvegarder();
+	/**
+	 * Instance d'un originateur
+	 */
+	private final IOriginateur<T> originateur = new Originateur<T>();
 
-	public void restorer(Memento<T> memento) {
-		setState(memento.getState());
-	}
-
-	public Etat<T> getState() {
-		return state;
-	}
-
-	public void setState(Etat<T> state) {
-		this.state = state;
+	/**
+	 * Retourne l'originateur qui conserve les etats dans des mementos
+	 * @return the originateur
+	 */
+	public IOriginateur<T> getOriginateur() {
+		return originateur;
 	}
 	
+	@Override
+	public Memento<T> sauvegarder() {
+		return originateur.sauvegarder();
+	}
+	
+	@Override
+	public void restorer(Memento<T> m) {
+		originateur.restorer(m);
+	}
 }
