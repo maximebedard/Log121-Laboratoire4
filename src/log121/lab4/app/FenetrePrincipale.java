@@ -1,4 +1,4 @@
-package log121.lab4.gui;
+package log121.lab4.app;
 
 import javax.swing.JFrame;
 

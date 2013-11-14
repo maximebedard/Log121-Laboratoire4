@@ -1,4 +1,8 @@
-package log121.lab4.api;
+package log121.lab4.app;
+
+import log121.lab4.api.ICloneable;
+import log121.lab4.api.Memento;
+import log121.lab4.api.Modele;
 
 public class Perspective extends Modele<Perspective> implements ICloneable {
 

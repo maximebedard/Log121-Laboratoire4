@@ -1,4 +1,4 @@
-package log121.lab4.tests;
+package log121.lab4.api.tests;
 
 import static org.junit.Assert.*;
 import log121.lab4.api.Memento;

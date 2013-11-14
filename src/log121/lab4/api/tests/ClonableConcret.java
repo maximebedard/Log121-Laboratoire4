@@ -1,4 +1,4 @@
-package log121.lab4.tests;
+package log121.lab4.api.tests;
 
 import log121.lab4.api.ICloneable;
 import log121.lab4.api.IOriginateur;
