@@ -3,13 +3,21 @@ package log121.lab4.api;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
-public class GestionnaireCommandes{
+public final class GestionnaireCommandes{
 
-	
+	/**
+	 * Pile qui contient toutes les opérations pouvant être annulés
+	 */
 	private final Stack<ICommande> undoStack = new Stack<ICommande>();
 	 
+	/**
+	 * Pile qui contient toutes les opérations pouvant être refaites
+	 */
 	private final Stack<ICommande> redoStack = new Stack<ICommande>();
 	
+	/**
+	 * Instance de la classe actuelle (Singleton)
+	 */
 	private static GestionnaireCommandes instance = new GestionnaireCommandes();
 
 	/**

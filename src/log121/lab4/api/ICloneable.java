@@ -6,6 +6,6 @@ public interface ICloneable extends Cloneable {
 	 * Créé une copie de l'objet
 	 * @return copie de l'objet
 	 */
-	public Object cloneObject();
+	Object cloneObject();
 	
 }

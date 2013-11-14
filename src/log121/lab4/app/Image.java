@@ -1,11 +1,12 @@
 package log121.lab4.app;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-import log121.lab4.api.ICloneable;
 import log121.lab4.api.Memento;
 import log121.lab4.api.Modele;
 
-public class Image extends Modele<Image> implements ICloneable {
+public class Image extends Modele<Image> {
+
+	private static final long serialVersionUID = -679409394432923243L;
 
 	@Override
 	public Memento<Image> creerMemento() {
@@ -17,13 +18,5 @@ public class Image extends Modele<Image> implements ICloneable {
 		throw new NotImplementedException();
 	}
 
-	@Override
-	public Object cloneObject() {
-		try {
-			return super.clone();
-		} catch (CloneNotSupportedException e) {
-			return null;
-		}
-	}
 
 }
