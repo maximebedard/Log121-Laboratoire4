@@ -8,17 +8,17 @@ import org.junit.Test;
 
 public class MementoTest {
 
-	Memento<ClonableConcret> memento;
+	Memento<OriginateurConcret> memento;
 	
 	@Before
 	public void setUp() throws Exception {
-		memento = new Memento<ClonableConcret>(new ClonableConcret());
+		memento = new Memento<OriginateurConcret>(new OriginateurConcret());
 	}
 
 	@Test
 	public void testGetEtat() {
 
-		ClonableConcret clonable = new ClonableConcret();
+		OriginateurConcret clonable = new OriginateurConcret();
 		
 		assertFalse(memento.getEtat() == clonable);
 		assertTrue(memento.getEtat().getX() == clonable.getX());

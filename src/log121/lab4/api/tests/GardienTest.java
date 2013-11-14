@@ -11,14 +11,14 @@ import org.junit.Test;
 
 public class GardienTest {
 
-	private Gardien<ClonableConcret> gardien;
-	private ClonableConcret clonable;
+	private Gardien<OriginateurConcret> gardien;
+	private OriginateurConcret clonable;
 	
 	
 	@Before
 	public void setUp() throws Exception {
-		clonable = new ClonableConcret();
-		gardien = new Gardien<ClonableConcret>(clonable);
+		clonable = new OriginateurConcret();
+		gardien = new Gardien<OriginateurConcret>(clonable);
 	}
 
 	@Test
