@@ -1,33 +1,64 @@
 package log121.lab4.api;
 
+import java.util.NoSuchElementException;
 import java.util.Stack;
 
 public class GestionnaireCommandes{
 
 	
-	private Stack<ICommande> historique = new Stack<ICommande>();
+	private final Stack<ICommande> undoStack = new Stack<ICommande>();
+	 
+	private final Stack<ICommande> redoStack = new Stack<ICommande>();
 	
 	private static GestionnaireCommandes instance = new GestionnaireCommandes();
 
-	public GestionnaireCommandes getInstance(){
+	/**
+	 * Retourne l'instance unique du gestionnaire de commandes
+	 * @return
+	 */
+	public static GestionnaireCommandes getInstance(){
 		return instance;
 	}
 	
+	/**
+	 * Execute la commande désiré et la conserve dans l'historique
+	 * @param commande
+	 */
 	public void executer(ICommande commande)
 	{
 		if(commande == null)
 			throw new IllegalArgumentException();
 		
-		historique.push(commande);
+		undoStack.push(commande);
 		commande.executer();
 	}
 	
-	public void defaire()
+	/**
+	 * Annule la commande précédente
+	 * @throws NoSuchElementException
+	 */
+	public void annuler()
 	{
-		if(historique.size() == 0)
-			return ;
+		if(undoStack.empty())
+			throw new NoSuchElementException();
 		
-		historique.pop().defaire();;
+		ICommande commande = undoStack.pop();
+		commande.defaire();
+		redoStack.push(commande);
+	}
+	
+	/**
+	 * Exécute la commande précemment annulé
+	 * @throws NoSuchElementException
+	 */
+	public void refaire()
+	{
+		if(redoStack.empty())
+			throw new NoSuchElementException();
+		
+		ICommande commande = redoStack.pop();
+		commande.executer();
+		undoStack.push(commande);
 	}
 	
 }
