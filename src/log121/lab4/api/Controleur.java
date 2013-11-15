@@ -2,9 +2,9 @@ package log121.lab4.api;
 
 import java.util.ArrayList;
 
-public class Controleur implements IObserveur<AttrModifieEvenement> {
+public class Controleur<T> implements IObserveur<AttrModifieEvenement> {
 
-	private final ArrayList<Vue> vues = new ArrayList<Vue>();
+	private final ArrayList<Vue<T>> vues = new ArrayList<Vue<T>>();
 
 	private final ArrayList<Modele<?>> modeles = new ArrayList<Modele<?>>();
 
@@ -16,17 +16,17 @@ public class Controleur implements IObserveur<AttrModifieEvenement> {
 		modeles.remove(m);
 	}
 
-	public void ajouterVue(Vue v) {
+	public void ajouterVue(Vue<T> v) {
 		vues.add(v);
 	}
 
-	public void enleverVue(Vue v) {
+	public void enleverVue(Vue<T> v) {
 		vues.remove(v);
 	}
 
 	@Override
 	public void update(AttrModifieEvenement event) {
-		for(Vue v : vues)
+		for(Vue<T> v : vues)
 			v.update(event);
 	}
 	
