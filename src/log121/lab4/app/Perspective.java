@@ -5,6 +5,12 @@ import log121.lab4.api.Modele;
 
 public class Perspective extends Modele<Perspective> {
 
+	public static final String X_ATTR = "X";
+
+	public static final String Y_ATTR = "Y";
+
+	public static final String ZOOM_ATTR = "Zoom";
+
 	private static final long serialVersionUID = 2693092317130168995L;
 
 	private int x;
@@ -27,7 +33,7 @@ public class Perspective extends Modele<Perspective> {
 	public void setZoom(int zoom) {
 		int oldZoom = this.zoom;
 		this.zoom = zoom;
-		lanceAttributEvenement("ZOOM", oldZoom, zoom);		
+		lanceAttributEvenement(ZOOM_ATTR, oldZoom, zoom);
 	}
 
 	/**
@@ -44,7 +50,7 @@ public class Perspective extends Modele<Perspective> {
 	public void setY(int y) {
 		int oldY = this.y;
 		this.y = y;
-		lanceAttributEvenement("Y", oldY, y);
+		lanceAttributEvenement(Y_ATTR, oldY, y);
 	}
 
 	/**
@@ -61,7 +67,7 @@ public class Perspective extends Modele<Perspective> {
 	public void setX(int x) {
 		int oldX = this.x;
 		this.x = x;
-		lanceAttributEvenement("X", oldX, x);
+		lanceAttributEvenement(X_ATTR, oldX, x);
 	}
 
 	@Override

@@ -1,11 +1,11 @@
 package log121.lab4.api;
 
-public class AttributEvenement {
+public class AttrModifieEvenement {
 
 	/**
 	 * Référence vers le sujet (immuable)
 	 */
-	private final ISujet<AttributEvenement> sujet;
+	private final ISujet<AttrModifieEvenement> sujet;
 	
 	/**
 	 * Référence vers l'attribut (immuable)
@@ -29,7 +29,7 @@ public class AttributEvenement {
 	 * @param ancienneValeur
 	 * @param nouvelleValeur
 	 */
-	public AttributEvenement(ISujet<AttributEvenement> sujet, String attribut, Object ancienneValeur, Object nouvelleValeur)
+	public AttrModifieEvenement(ISujet<AttrModifieEvenement> sujet, String attribut, Object ancienneValeur, Object nouvelleValeur)
 	{
 		this.sujet = sujet;
 		this.attribut = attribut;
@@ -40,7 +40,7 @@ public class AttributEvenement {
 	/**
 	 * @return the sujet
 	 */
-	public ISujet<AttributEvenement> getSujet() {
+	public ISujet<AttrModifieEvenement> getSujet() {
 		return sujet;
 	}
 

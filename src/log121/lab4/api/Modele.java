@@ -4,29 +4,29 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public abstract class Modele<T extends ICloneable> implements IOriginateur<T>,
-		Serializable, ICloneable, ISujet<AttributEvenement> {
+		Serializable, ICloneable, ISujet<AttrModifieEvenement> {
 
-	private final ArrayList<IObserveur<AttributEvenement>> observeurs = new ArrayList<IObserveur<AttributEvenement>>();
+	private final ArrayList<IObserveur<AttrModifieEvenement>> observeurs = new ArrayList<IObserveur<AttrModifieEvenement>>();
 
 	@Override
-	public void attacher(IObserveur<AttributEvenement> o) {
+	public void attacher(IObserveur<AttrModifieEvenement> o) {
 		observeurs.add(o);
 	}
 
 	@Override
-	public void detacher(IObserveur<AttributEvenement> o) {
+	public void detacher(IObserveur<AttrModifieEvenement> o) {
 		observeurs.remove(o);
 	}
 
 	@Override
-	public void notifier(AttributEvenement event) {
-		for (IObserveur<AttributEvenement> o : observeurs)
+	public void notifier(AttrModifieEvenement event) {
+		for (IObserveur<AttrModifieEvenement> o : observeurs)
 			o.update(event);
 	}
 
 	protected void lanceAttributEvenement(String attribut,
 			Object ancienneValeur, Object nouvelleValeur) {
-		notifier(new AttributEvenement(this, attribut, ancienneValeur,
+		notifier(new AttrModifieEvenement(this, attribut, ancienneValeur,
 				nouvelleValeur));
 	}
 
@@ -41,5 +41,5 @@ public abstract class Modele<T extends ICloneable> implements IOriginateur<T>,
 		}
 
 	}
-
+	
 }
