@@ -18,7 +18,7 @@ public final class GestionnaireCommandes{
 	/**
 	 * Instance de la classe actuelle (Singleton)
 	 */
-	private static GestionnaireCommandes instance = new GestionnaireCommandes();
+	private static final GestionnaireCommandes instance = new GestionnaireCommandes();
 
 	/**
 	 * Retourne l'instance unique du gestionnaire de commandes

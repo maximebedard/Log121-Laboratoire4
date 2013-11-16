@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class ImageTest {
 
-	Image img;
+	private Image img;
 	@Before
 	public void setUp() throws Exception {
 		img = new Image();

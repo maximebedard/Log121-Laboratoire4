@@ -3,18 +3,18 @@ package log121.lab4.api;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
-public class Gardien<T extends ICloneable> {
+public class Gardien<T extends IOriginateur> {
 
 	
-	public Gardien(IOriginateur<T> originateur){
+	public Gardien(T originateur){
 		this.originateur = originateur;
 	}
 	
-	private final IOriginateur<T> originateur;
+	private final T originateur;
 	
-	private final Stack<Memento<T>> undoStack = new Stack<Memento<T>>();
+	private final Stack<Memento<ICloneable>> undoStack = new Stack<Memento<ICloneable>>();
 	
-	private final Stack<Memento<T>> redoStack = new Stack<Memento<T>>();
+	private final Stack<Memento<ICloneable>> redoStack = new Stack<Memento<ICloneable>>();
 	
 	public void sauvegarder()
 	{
@@ -26,7 +26,7 @@ public class Gardien<T extends ICloneable> {
 		if(!possedeAnnuler())
 			throw new NoSuchElementException();
 		
-		Memento<T> memento = undoStack.pop();
+		Memento<ICloneable> memento = undoStack.pop();
 		originateur.restaurerMemento(memento);
 		redoStack.push(memento);
 	}
@@ -37,7 +37,7 @@ public class Gardien<T extends ICloneable> {
 		if(!possedeRefaire())
 			throw new NoSuchElementException();
 		
-		Memento<T> memento = redoStack.pop();
+		Memento<ICloneable> memento = redoStack.pop();
 		originateur.restaurerMemento(memento);
 		undoStack.push(memento);
 	}

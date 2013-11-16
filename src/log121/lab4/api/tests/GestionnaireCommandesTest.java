@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class GestionnaireCommandesTest {
 
-	GestionnaireCommandes manager;
+	private GestionnaireCommandes manager;
 
 	private boolean valide;
 
@@ -76,7 +76,7 @@ public class GestionnaireCommandesTest {
 	 * @param valide
 	 *            the bidon to set
 	 */
-	public void setValide(boolean valide) {
+    void setValide(boolean valide) {
 		this.valide = valide;
 	}
 

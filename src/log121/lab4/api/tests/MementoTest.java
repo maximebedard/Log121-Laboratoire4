@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class MementoTest {
 
-	Memento<OriginateurConcret> memento;
+	private Memento<OriginateurConcret> memento;
 	
 	@Before
 	public void setUp() throws Exception {
