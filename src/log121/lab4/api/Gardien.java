@@ -3,7 +3,7 @@ package log121.lab4.api;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
-public class Gardien<T extends IOriginateur> {
+public class Gardien<T extends IOriginateur<ICloneable>> {
 
 	
 	public Gardien(T originateur){

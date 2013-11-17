@@ -1,24 +1,27 @@
 package log121.lab4.app;
 
-import log121.lab4.api.Modele;
-import log121.lab4.api.Vue;
-
-import javax.swing.JFrame;
+import javax.swing.*;
 
 
 public class FenetrePrincipale extends JFrame {
 
     private static final long serialVersionUID = -547817680802874525L;
 
+    private final JDesktopPane desktopPane = new JDesktopPane();
+
     public FenetrePrincipale() {
 
+        new ControleurImage(
+                new Image(),
+                new VueGlobale(),
+                new VueTranslation(),
+                new VueZoom()
+        );
 
-        Perspective perspective = new Perspective();
-        Image image = new Image();
-        ControleurPrincipal controleurPrincipal = new ControleurPrincipal(perspective, image);
+    }
 
-        controleurPrincipal.ajouterVue(new VueGlobale());
-        controleurPrincipal.ajouterVue(new VueZoom());
-        controleurPrincipal.ajouterVue(new VueTranslation());
+    public static void main(String[] args)
+    {
+        new FenetrePrincipale();
     }
 }

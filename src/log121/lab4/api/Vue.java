@@ -1,16 +1,15 @@
 package log121.lab4.api;
 
-import javax.swing.JPanel;
+public abstract class Vue implements IObserveur<AttrModifieEvenement> {
 
-public abstract class Vue extends JPanel implements IObserveur<AttrModifieEvenement> {
-
-	private static final long serialVersionUID = -8638094888905155861L;
-
-	public Vue()
+	public Vue(Controleur<?, ?> controleur)
 	{
 		initComponents();
+        setControleur(controleur);
 	}
-	
+
 	protected abstract void initComponents();
+
+    protected abstract void setControleur(Controleur<?, ?> controleur);
 
 }
