@@ -24,7 +24,12 @@ public class CommandeZoom implements ICommande {
     }
 
     @Override
-    public void defaire() {
+    public void annuler() {
         gardien.annuler();
+    }
+
+    @Override
+    public boolean annulable() {
+        return true;
     }
 }

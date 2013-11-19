@@ -41,7 +41,7 @@ public class Image extends Modele {
     }
 
 	@Override
-	public void restaurerMemento(Memento<ICloneable> m) {
+	public void restaurerMemento(Memento m) {
         if(m == null)
             throw new NullPointerException();
 

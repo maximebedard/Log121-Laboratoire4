@@ -9,18 +9,10 @@ public class VueZoom extends Vue {
 
 	private static final long serialVersionUID = 8550598435588018968L;
 
-    public VueZoom(Controleur<?, ?> controleur) {
-        super(controleur);
-    }
-
     @Override
 	public void initComponents() {
 		throw new NotImplementedException();
 	}
-
-    @Override
-    protected void setControleur(Controleur<?, ?> controleur) {
-    }
 
     @Override
 	public void update(AttrModifieEvenement event) {

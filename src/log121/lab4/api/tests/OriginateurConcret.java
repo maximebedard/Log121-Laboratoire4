@@ -4,7 +4,7 @@ import log121.lab4.api.ICloneable;
 import log121.lab4.api.IOriginateur;
 import log121.lab4.api.Memento;
 
-public class OriginateurConcret implements IOriginateur<OriginateurConcret>, ICloneable{
+public class OriginateurConcret implements IOriginateur, ICloneable{
 
 	private int x;
 	
@@ -19,14 +19,22 @@ public class OriginateurConcret implements IOriginateur<OriginateurConcret>, ICl
 	}
 
 	@Override
-	public Memento<OriginateurConcret> creerMemento() {
-		return new Memento<OriginateurConcret>(this);
+	public Memento creerMemento() {
+		return new Memento(this);
 	}
 
 	@Override
-	public void restaurerMemento(Memento<OriginateurConcret> m) {
-		this.setX(m.getEtat().getX());
-		this.setY(m.getEtat().getY());
+	public void restaurerMemento(Memento m) {
+
+        if (m == null)
+            throw new NullPointerException();
+
+        if (!(m.getEtat() instanceof OriginateurConcret))
+            throw new IllegalArgumentException();
+
+        OriginateurConcret oc = (OriginateurConcret) m.getEtat();
+		this.setX(oc.getX());
+		this.setY(oc.getY());
 	}
 
 	/**

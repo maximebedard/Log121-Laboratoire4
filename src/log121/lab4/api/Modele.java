@@ -3,7 +3,7 @@ package log121.lab4.api;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Modele implements IOriginateur<ICloneable>,
+public abstract class Modele implements IOriginateur,
 		Serializable, ICloneable, ISujet<AttrModifieEvenement> {
 
 	private final ArrayList<IObserveur<AttrModifieEvenement>> observeurs = new ArrayList<IObserveur<AttrModifieEvenement>>();
@@ -34,8 +34,8 @@ public abstract class Modele implements IOriginateur<ICloneable>,
 
 
     @Override
-    public Memento<ICloneable> creerMemento() {
-        return new Memento<ICloneable>(this);
+    public Memento creerMemento() {
+        return new Memento(this);
     }
 
 	@Override

@@ -8,8 +8,14 @@ public interface ICommande {
 	void executer();
 	
 	/**
-	 * Execute l'operation inverse de la commande
+	 * Annule la commande (effectue l'opération inverse)
 	 */
-	void defaire();
-	
+	void annuler();
+
+    /**
+     * Définit si l'opération est annulable (peut-être annulé)
+     * @return vrai si l'opération peut être annulé
+     */
+    boolean annulable();
+
 }

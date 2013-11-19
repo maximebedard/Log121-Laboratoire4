@@ -1,26 +1,26 @@
 package log121.lab4.api;
 
-public class Memento<T extends ICloneable>{
+public class Memento{
 
 	/**
 	 * Etat immuable du memento
 	 */
-	private final T etat;
+	private final ICloneable etat;
 
 	/**
 	 * Constructeur d'un memento immuable
-	 * @param etat
+	 * @param etat objet clonable qui sera cloné
 	 */
 	@SuppressWarnings("unchecked")
-	public Memento(T etat) {
-		this.etat = (T) etat.cloneObject();
+	public Memento(ICloneable etat) {
+		this.etat = (ICloneable) etat.cloneObject();
 	}
 	
 	/**
 	 * Retourne l'état du memento
-	 * @return
+	 * @return la copie immuable de l'objet
 	 */
-	public T getEtat() {
+	public ICloneable getEtat() {
 		return etat;
 	}
 	

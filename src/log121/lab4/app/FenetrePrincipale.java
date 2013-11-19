@@ -11,12 +11,15 @@ public class FenetrePrincipale extends JFrame {
 
     public FenetrePrincipale() {
 
-        new ControleurImage(
-                new Image(),
-                new VueGlobale(),
-                new VueTranslation(),
-                new VueZoom()
-        );
+        Image image = new Image();
+
+        VueTranslation vueTranslation = new VueTranslation();
+        VueGlobale vueGlobale = new VueGlobale();
+        VueZoom vueZoom = new VueZoom();
+
+        new ControleurImageGlobale(image, vueGlobale);
+        new ControleurImageTranslation(image, vueTranslation);
+        new ControleurImageZoom(image, vueZoom);
 
     }
 

@@ -24,10 +24,10 @@ public class AttrModifieEvenement {
 	
 	/**
 	 * Constructueur de l'événement qui est lancé lors de la modification d'un attribut
-	 * @param sujet
-	 * @param attribut
-	 * @param ancienneValeur
-	 * @param nouvelleValeur
+	 * @param sujet Sujet qui lance les événements
+	 * @param attribut attribut qui est modifié sur le sujet
+	 * @param ancienneValeur valeur avant que celle-ci soit modifié
+	 * @param nouvelleValeur nouvelle valeur
 	 */
 	public AttrModifieEvenement(ISujet<AttrModifieEvenement> sujet, String attribut, Object ancienneValeur, Object nouvelleValeur)
 	{

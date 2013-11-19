@@ -9,8 +9,16 @@ public abstract class Controleur<M extends Modele, V extends Vue> implements Act
 
     private final V vue;
 
-    public Controleur(M modele, V vue) {
+    protected Controleur(M modele, V vue) {
         this.modele = modele;
         this.vue = vue;
+    }
+
+    public V getVue() {
+        return vue;
+    }
+
+    public M getModele() {
+        return modele;
     }
 }

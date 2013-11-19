@@ -22,7 +22,7 @@ public final class GestionnaireCommandes{
 
 	/**
 	 * Retourne l'instance unique du gestionnaire de commandes
-	 * @return
+	 * @return instance unique du gestionnaire
 	 */
 	public static GestionnaireCommandes getInstance(){
 		return instance;
@@ -30,14 +30,16 @@ public final class GestionnaireCommandes{
 	
 	/**
 	 * Execute la commande désiré et la conserve dans l'historique
-	 * @param commande
+	 * @param commande commande qui doit être éxecuté
 	 */
 	public void executer(ICommande commande)
 	{
 		if(commande == null)
 			throw new IllegalArgumentException();
-		
-		undoStack.push(commande);
+
+        if(commande.annulable())
+		    undoStack.push(commande);
+
 		commande.executer();
 	}
 	
@@ -51,7 +53,7 @@ public final class GestionnaireCommandes{
 			throw new NoSuchElementException();
 		
 		ICommande commande = undoStack.pop();
-		commande.defaire();
+		commande.annuler();
 		redoStack.push(commande);
 	}
 	

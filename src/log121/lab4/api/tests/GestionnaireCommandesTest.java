@@ -6,6 +6,7 @@ import log121.lab4.api.ICommande;
 
 import org.junit.Before;
 import org.junit.Test;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class GestionnaireCommandesTest {
 
@@ -13,11 +14,11 @@ public class GestionnaireCommandesTest {
 
 	private boolean valide;
 
-	private class CommandeConcrete implements ICommande {
+	private class CommandeConcreteDefaisable implements ICommande {
 
 		private final GestionnaireCommandesTest gct;
 
-		public CommandeConcrete(GestionnaireCommandesTest gct) {
+		public CommandeConcreteDefaisable(GestionnaireCommandesTest gct) {
 			this.gct = gct;
 		}
 
@@ -27,10 +28,39 @@ public class GestionnaireCommandesTest {
 		}
 
 		@Override
-		public void defaire() {
+		public void annuler() {
 			gct.setValide(false);
 		}
-	}
+
+        @Override
+        public boolean annulable() {
+            return true;
+        }
+    }
+
+    private class CommandeConcreteNonDefaisable implements ICommande {
+
+        private final GestionnaireCommandesTest gct;
+
+        public CommandeConcreteNonDefaisable(GestionnaireCommandesTest gct) {
+            this.gct = gct;
+        }
+
+        @Override
+        public void executer() {
+            gct.setValide(true);
+        }
+
+        @Override
+        public void annuler() {
+            throw new NotImplementedException();
+        }
+
+        @Override
+        public boolean annulable() {
+            return false;
+        }
+    }
 
 	@Before
 	public void setUp() throws Exception {
@@ -42,7 +72,7 @@ public class GestionnaireCommandesTest {
 	public void testExecuter() {
 		assertFalse(valide);
 
-		manager.executer(new CommandeConcrete(this));
+		manager.executer(new CommandeConcreteDefaisable(this));
 
 		assertTrue(valide);
 	}

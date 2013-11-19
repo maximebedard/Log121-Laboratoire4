@@ -9,19 +9,10 @@ public class VueGlobale extends Vue {
 
 	private static final long serialVersionUID = -7558465286428238937L;
 
-    public VueGlobale(Controleur<?, ?> controleur) {
-        super(controleur);
-    }
-
     @Override
 	public void initComponents() {
 		throw new NotImplementedException();
 	}
-
-    @Override
-    protected void setControleur(Controleur<?, ?> controleur) {
-
-    }
 
     @Override
 	public void update(AttrModifieEvenement event) {
