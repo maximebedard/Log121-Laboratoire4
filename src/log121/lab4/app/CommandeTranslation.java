@@ -1,36 +1,30 @@
 package log121.lab4.app;
 
-import log121.lab4.api.Gardien;
-import log121.lab4.api.ICloneable;
 import log121.lab4.api.ICommande;
 
 public class CommandeTranslation implements ICommande {
 
-    private final Gardien<Perspective> gardien;
-
-    private final Perspective perspective;
+    private final ModelePerspective modelePerspective;
 
     private final int dx;
 
     private final int dy;
 
-    public CommandeTranslation(Perspective perspective, int dx, int dy)
+    public CommandeTranslation(ModelePerspective modelePerspective, int dx, int dy)
     {
-        this.gardien = new Gardien<Perspective>(perspective);
-        this.perspective = perspective;
+        this.modelePerspective = modelePerspective;
         this.dx = dx;
         this.dy = dy;
     }
 
     @Override
     public void executer() {
-        gardien.sauvegarder();
-        perspective.translater(dx, dy);
+        modelePerspective.translater(dx, dy);
     }
 
     @Override
     public void annuler() {
-        gardien.annuler();
+        modelePerspective.translater(-1 * dx, -1 * dy);
     }
 
     @Override

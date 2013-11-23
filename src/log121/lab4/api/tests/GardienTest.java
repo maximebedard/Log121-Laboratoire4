@@ -1,24 +1,23 @@
 package log121.lab4.api.tests;
 
-import static org.junit.Assert.*;
-
-import java.util.NoSuchElementException;
-
 import log121.lab4.api.Gardien;
-
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
+import static org.junit.Assert.*;
+
 public class GardienTest {
 
-	private Gardien<OriginateurConcret> gardien;
+	private Gardien gardien;
 	private OriginateurConcret clonable;
 	
 	
 	@Before
 	public void setUp() throws Exception {
 		clonable = new OriginateurConcret();
-		gardien = new Gardien<OriginateurConcret>(clonable);
+		gardien = new Gardien(clonable);
 	}
 
 	@Test

@@ -1,21 +1,21 @@
 package log121.lab4.app;
 
-import log121.lab4.api.*;
+import log121.lab4.api.ICommande;
+import log121.lab4.api.Modele;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 
 public class CommandeSauvegarder implements ICommande {
 
-    private final ArrayList<Modele> modeles;
+    private final Modele modele;
     private final String chemin;
 
-    public CommandeSauvegarder(ArrayList<Modele> modeles, String chemin) {
-        this.modeles = modeles;
+    public CommandeSauvegarder(Modele modele, String chemin) {
+        this.modele = modele;
         this.chemin = chemin;
     }
 
@@ -25,12 +25,9 @@ public class CommandeSauvegarder implements ICommande {
         try {
             FileOutputStream fileOut = new FileOutputStream(chemin);
 
-            for (Modele m : modeles)
-            {
-                ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                out.writeObject(m);
-                out.close();
-            }
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(modele);
+            out.close();
 
             fileOut.close();
         } catch (FileNotFoundException e) {

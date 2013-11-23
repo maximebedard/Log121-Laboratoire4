@@ -1,9 +1,11 @@
 package log121.lab4.app;
 
-import log121.lab4.api.Controleur;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-import log121.lab4.api.AttrModifieEvenement;
 import log121.lab4.api.Vue;
+
+import java.awt.*;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.util.Observable;
 
 public class VueGlobale extends Vue {
 
@@ -11,12 +13,14 @@ public class VueGlobale extends Vue {
 
     @Override
 	public void initComponents() {
-		throw new NotImplementedException();
+        setPreferredSize(new Dimension(400, 400));
+        setBackground(Color.blue);
 	}
 
+
+
     @Override
-	public void update(AttrModifieEvenement event) {
-		throw new NotImplementedException();
-	}
+    public void update(Observable o, Object arg) {
+    }
 
 }

@@ -1,23 +1,24 @@
 package log121.lab4.app.tests;
 
-import static org.junit.Assert.*;
-import log121.lab4.app.Perspective;
-
+import log121.lab4.app.ModelePerspective;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.fail;
+
 public class PerspectiveTest {
 
-	private Perspective p;
+	private ModelePerspective p;
 
 	@Before
 	public void setUp() throws Exception {
-		p = new Perspective();
+		p = new ModelePerspective();
 	}
 
 	@Test
 	public void testClone() {
-		Perspective p2 = new Perspective();
+		ModelePerspective p2 = new ModelePerspective();
 		assertFalse(p2 == p);
 	}
 

@@ -1,36 +1,12 @@
 package log121.lab4.api;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+import java.io.*;
+import java.util.Observable;
 
-public abstract class Modele implements IOriginateur,
-		Serializable, ICloneable, ISujet<AttrModifieEvenement> {
+public abstract class Modele extends Observable implements IOriginateur, ICloneable,
+        Serializable {
 
-	private final ArrayList<IObserveur<AttrModifieEvenement>> observeurs = new ArrayList<IObserveur<AttrModifieEvenement>>();
-
-	@Override
-	public void attacher(IObserveur<AttrModifieEvenement> o) {
-		observeurs.add(o);
-	}
-
-	@Override
-	public void detacher(IObserveur<AttrModifieEvenement> o) {
-		observeurs.remove(o);
-	}
-
-	@Override
-	public void notifier(AttrModifieEvenement event) {
-		for (IObserveur<AttrModifieEvenement> o : observeurs)
-			o.update(event);
-	}
-
-	protected void lanceAttributEvenement(String attribut,
-			Object ancienneValeur, Object nouvelleValeur) {
-		notifier(new AttrModifieEvenement(this, attribut, ancienneValeur,
-				nouvelleValeur));
-	}
-
-	private static final long serialVersionUID = -8014118939667006520L;
+    private static final long serialVersionUID = -8014118939667006520L;
 
 
     @Override
@@ -38,14 +14,36 @@ public abstract class Modele implements IOriginateur,
         return new Memento(this);
     }
 
-	@Override
-	public Object cloneObject() {
-		try {
-			return super.clone();
-		} catch (CloneNotSupportedException e) {
-			return null;
-		}
+    @Override
+    public Object cloneObject() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
+    }
 
-	}
-	
+
+    public static void serialiser(Modele m, String chemin) throws IOException {
+
+        FileOutputStream fileOut = new FileOutputStream(chemin);
+
+        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        out.writeObject(m);
+        out.close();
+
+        fileOut.close();
+
+    }
+
+    public static Modele deserialiser(String chemin) throws IOException, ClassNotFoundException {
+
+        FileInputStream fis = new FileInputStream(chemin);
+
+        ObjectInputStream ois = new ObjectInputStream(fis);
+
+        return (Modele)ois.readObject();
+
+    }
+
 }

@@ -1,7 +1,10 @@
 package log121.lab4.app.tests;
 
+import log121.lab4.api.ICommande;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import static org.junit.Assert.fail;
 
@@ -11,10 +14,12 @@ import static org.junit.Assert.fail;
  * Time: 11:02 AM
  */
 public class CommandeOuvrirTest {
+
+    ICommande commande;
+
     @Before
     public void setUp() throws Exception {
 
-        fail("Not yet implemented");
     }
 
     @Test
@@ -23,15 +28,18 @@ public class CommandeOuvrirTest {
         fail("Not yet implemented");
     }
 
-    @Test
+    @Test(expected = NotImplementedException.class)
     public void testAnnuler() throws Exception {
 
-        fail("Not yet implemented");
     }
 
-    @Test
+    @Test(expected = NotImplementedException.class)
     public void testAnnulable() throws Exception {
 
-        fail("Not yet implemented");
+    }
+
+    @After
+    public void after()
+    {
     }
 }

@@ -1,31 +1,25 @@
 package log121.lab4.app;
 
-import log121.lab4.api.Gardien;
-import log121.lab4.api.ICloneable;
 import log121.lab4.api.ICommande;
-import log121.lab4.api.IOriginateur;
 
 public class CommandeZoom implements ICommande {
 
-    private final Gardien<Perspective> gardien;
-    private final Perspective perspective;
+    private final ModelePerspective modelePerspective;
     private final int zoom;
 
-    public CommandeZoom(Perspective perspective, int zoom) {
-        this.gardien = new Gardien<Perspective>(perspective);
+    public CommandeZoom(ModelePerspective modelePerspective, int zoom) {
         this.zoom = zoom;
-        this.perspective = perspective;
+        this.modelePerspective = modelePerspective;
     }
 
     @Override
     public void executer() {
-        gardien.sauvegarder();
-        perspective.setZoom(zoom);
+        modelePerspective.setZoom(zoom);
     }
 
     @Override
     public void annuler() {
-        gardien.annuler();
+        modelePerspective.setZoom(-1*zoom);
     }
 
     @Override

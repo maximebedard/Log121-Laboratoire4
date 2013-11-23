@@ -1,5 +1,6 @@
 package log121.lab4.app.tests;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,9 +12,15 @@ import static org.junit.Assert.fail;
  * Time: 11:02 AM
  */
 public class CommandeTranslationTest {
+
+    private CommandeSauvegarderTest sauvegarderTest;
+
     @Before
     public void setUp() throws Exception {
-        fail("Not yet implemented");
+        sauvegarderTest = new CommandeSauvegarderTest();
+        sauvegarderTest.setUp();
+
+
     }
 
     @Test
@@ -29,5 +36,11 @@ public class CommandeTranslationTest {
     @Test
     public void testAnnulable() throws Exception {
         fail("Not yet implemented");
+    }
+
+    @After
+    public void after()
+    {
+        sauvegarderTest.after();
     }
 }

@@ -1,10 +1,13 @@
 package log121.lab4.api;
 
-public abstract class Vue implements IObserveur<AttrModifieEvenement> {
+import javax.swing.*;
+import java.util.Observer;
 
-	protected Vue()
+public abstract class Vue extends JPanel implements Observer {
+
+    protected Vue()
 	{
-		initComponents();
+        initComponents();
 	}
 
 	protected abstract void initComponents();

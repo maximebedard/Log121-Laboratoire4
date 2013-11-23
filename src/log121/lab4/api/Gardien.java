@@ -3,14 +3,14 @@ package log121.lab4.api;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
-public class Gardien<T extends IOriginateur> {
+public class Gardien{
 
 	
-	public Gardien(T originateur){
+	public Gardien(IOriginateur originateur){
 		this.originateur = originateur;
 	}
 	
-	private final T originateur;
+	private final IOriginateur originateur;
 	
 	private final Stack<Memento> undoStack = new Stack<Memento>();
 	
