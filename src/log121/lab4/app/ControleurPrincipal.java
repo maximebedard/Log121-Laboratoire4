@@ -42,6 +42,12 @@ public class ControleurPrincipal {
     }
 
     private void initVueModel() {
+        modeleImage = new ModeleImage();
+        modelePerspective = new ModelePerspective();
+
+        modeles.add(modeleImage);
+        modeles.add(modelePerspective);
+
         vueZoom = new VueZoom();
         vueGlobale = new VueGlobale();
         vueTranslation = new VueTranslation();
@@ -49,6 +55,10 @@ public class ControleurPrincipal {
         vues.add(vueZoom);
         vues.add(vueGlobale);
         vues.add(vueTranslation);
+
+        for(Modele m : modeles)
+            for(Vue v : vues)
+                m.addObserver(v);
     }
 
     private void initComposantes() {
@@ -65,13 +75,93 @@ public class ControleurPrincipal {
         panel.add(vueTranslation);
 
 
+
         menuPrincipal = new MenuPrincipal();
+
 
         frame.add(menuPrincipal, BorderLayout.NORTH);
         frame.add(panel, BorderLayout.CENTER);
 
         frame.pack();
     }
+
+
+
+
+    private class MenuPrincipal extends JMenuBar
+    {
+
+        private JMenu fichier;
+
+        private JMenu edition;
+
+        private JMenu transformation;
+
+        private JMenu aide;
+
+
+        public MenuPrincipal() {
+            creerMenuFichier();
+            creerMenuEdition();
+            creerMenuTransformation();
+            creerMenuAide();
+        }
+
+        private void creerMenuAide() {
+            aide = creerMenu(
+                    "app.frame.menus.help.title",
+                    new CommandeAbstraite[]{
+                        new CommandeAide()
+                    });
+
+            this.add(aide);
+        }
+
+        private void creerMenuTransformation() {
+            transformation = creerMenu(
+                    "app.frame.menus.transform.title",
+                    new CommandeAbstraite[]{
+                            new CommandeTranslation(modelePerspective),
+                            new CommandeZoom(modelePerspective)
+                    });
+
+            this.add(transformation);
+        }
+
+        private void creerMenuEdition() {
+
+            edition = creerMenu(
+                    "app.frame.menus.edition.title",
+                    new CommandeAbstraite[]{
+                            new CommandeUndo(),
+                            new CommandeRedo()
+                    });
+
+            this.add(edition);
+        }
+
+        private void creerMenuFichier() {
+            fichier = creerMenu(
+                    "app.frame.menus.file.title",
+                    new CommandeAbstraite[] {
+                        new CommandeOuvrir(modeleImage, vues),
+                        new CommandeSauvegarder(modeleImage),
+                        new CommandeQuitter()
+                    });
+            this.add(fichier);
+        }
+
+
+        private JMenu creerMenu(String resourceKey, CommandeAbstraite[] commandeAbstraites) {
+            JMenu menu = new JMenu(ResourceManager.getResource(resourceKey));
+            for (CommandeAbstraite key : commandeAbstraites)
+            {
+                menu.add(key);
+            }
+            return menu;
+        }
+    }
+
 
     public static void main(String[] args)
     {

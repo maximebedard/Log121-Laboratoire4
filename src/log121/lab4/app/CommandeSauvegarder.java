@@ -10,29 +10,27 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-public class CommandeSauvegarder extends JMenuItem implements ICommande {
+public class CommandeSauvegarder extends CommandeAbstraite {
 
     private final Modele modele;
     private final String chemin;
 
+    public CommandeSauvegarder(Modele modele)
+    {
+        // todo : ajouter input box
+        this(modele, "");
+    }
+
     public CommandeSauvegarder(Modele modele, String chemin) {
+        super("app.frame.menus.file.save");
         this.modele = modele;
         this.chemin = chemin;
     }
 
     @Override
     public void executer() {
-
         try {
-            FileOutputStream fileOut = new FileOutputStream(chemin);
-
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(modele);
-            out.close();
-
-            fileOut.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Modele.serialiser(modele, chemin);
         } catch (IOException e) {
             e.printStackTrace();
         }

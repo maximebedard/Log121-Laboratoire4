@@ -1,20 +1,18 @@
 package log121.lab4.app;
 
 
-import log121.lab4.api.ICommande;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import javax.swing.*;
-
-public class CommandeQuitter extends CommandeAbstraite {
-
-    public CommandeQuitter() {
-        super("app.frame.menus.file.exit");
+public class CommandeAide extends CommandeAbstraite
+{
+    public CommandeAide() {
+        super("app.frame.menus.help.about");
     }
 
     @Override
     public void executer() {
-        System.exit(0);
+        System.out.println("asDASDAS");
+        // TODO
     }
 
     @Override

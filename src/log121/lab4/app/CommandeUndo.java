@@ -7,22 +7,27 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.swing.*;
 
-public class CommandeUndo implements ICommande {
+public class CommandeUndo extends CommandeAbstraite {
 
 
+    public CommandeUndo() {
+        super("app.frame.menus.edition.undo");
+    }
 
     @Override
     public void executer() {
-        GestionnaireCommandes.getInstance().annuler();
+
+        // todo
     }
 
     @Override
     public void annuler() {
-        GestionnaireCommandes.getInstance().refaire();
+        // todo
     }
 
     @Override
     public boolean annulable() {
+        // todo
         return true;
     }
 }

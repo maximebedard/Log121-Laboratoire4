@@ -1,10 +1,11 @@
 package log121.lab4.app;
 
+import log121.lab4.api.Gardien;
 import log121.lab4.api.ICommande;
 
 import javax.swing.*;
 
-public class CommandeTranslation implements ICommande {
+public class CommandeTranslation extends CommandeAbstraite {
 
     private final ModelePerspective modelePerspective;
 
@@ -12,8 +13,18 @@ public class CommandeTranslation implements ICommande {
 
     private final int dy;
 
+    private final Gardien gardien;
+
+    public CommandeTranslation(ModelePerspective modelePerspective)
+    {
+        // TODO : Ajouter input box ici
+        this(modelePerspective, 0,0);
+    }
+
     public CommandeTranslation(ModelePerspective modelePerspective, int dx, int dy)
     {
+        super("app.frame.menus.transform.translate");
+        gardien = new Gardien(modelePerspective);
         this.modelePerspective = modelePerspective;
         this.dx = dx;
         this.dy = dy;
@@ -21,12 +32,13 @@ public class CommandeTranslation implements ICommande {
 
     @Override
     public void executer() {
+        gardien.sauvegarder();
         modelePerspective.translater(dx, dy);
     }
 
     @Override
     public void annuler() {
-        modelePerspective.translater(-1 * dx, -1 * dy);
+        gardien.annuler();
     }
 
     @Override

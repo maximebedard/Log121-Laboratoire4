@@ -9,25 +9,46 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CommandeOuvrir extends CommandeNouveau {
+public class CommandeOuvrir extends CommandeAbstraite {
 
+    private Modele modele;
+    private final ArrayList<Vue> vues;
     private final String chemin;
 
-    public CommandeOuvrir(ArrayList<Modele> modeles, ModeleType type, ArrayList<Vue> vues, String chemin) {
-        super(modeles, type, vues);
+    public CommandeOuvrir(Modele modele, ArrayList<Vue> vues)
+    {
+        // todo ajouter input box
+        this(modele, vues, "");
+    }
+
+    public CommandeOuvrir(Modele modele, ArrayList<Vue> vues, String chemin) {
+        super("app.frame.menus.file.load");
+        this.modele = modele;
+        this.vues = vues;
         this.chemin = chemin;
     }
 
     @Override
     public void executer() {
-        super.executer();
         try {
-            Modele m = Modele.deserialiser(chemin);
-            getNouveauModele().restaurerMemento(m.creerMemento());
+            modele = Modele.deserialiser(chemin);
+            for(Vue v : vues)
+                modele.addObserver(v);
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void annuler() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean annulable() {
+        return false;
     }
 }
