@@ -6,6 +6,7 @@ import log121.lab4.api.Modele;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -26,6 +27,8 @@ public class ModeleImage extends Modele {
 
     private String chemin;
 
+    private final ArrayList<ModelePerspective> perspectives = new ArrayList<ModelePerspective>();
+
     private void loadImage(String chemin) {
         try {
             image = ImageIO.read(new File(chemin));
@@ -45,9 +48,7 @@ public class ModeleImage extends Modele {
 
         ModeleImage i = (ModeleImage) m.getEtat();
         setChemin(i.getChemin());
-
     }
-
 
     public void setImage(BufferedImage image) {
         this.image = image;
@@ -68,4 +69,17 @@ public class ModeleImage extends Modele {
         setChanged();
         notifyObservers(chemin);
     }
+
+    public ArrayList<ModelePerspective> getPerspectives() {
+        return perspectives;
+    }
+
+    public void ajouterPerspective(ModelePerspective perspective) {
+        perspectives.add(perspective);
+    }
+
+    public void enleverPerspective(ModelePerspective perspective) {
+        perspectives.remove(perspective);
+    }
+
 }

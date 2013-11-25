@@ -6,20 +6,22 @@ public class CommandeZoom implements ICommande {
 
     private final ModelePerspective modelePerspective;
     private final int zoom;
+    private final int increment;
 
-    public CommandeZoom(ModelePerspective modelePerspective, int zoom) {
-        this.zoom = zoom;
+    public CommandeZoom(ModelePerspective modelePerspective, int increment) {
+        this.zoom = modelePerspective.getZoom();
         this.modelePerspective = modelePerspective;
+        this.increment = increment;
     }
 
     @Override
     public void executer() {
-        modelePerspective.setZoom(zoom);
+        modelePerspective.setZoom(zoom + increment);
     }
 
     @Override
     public void annuler() {
-        modelePerspective.setZoom(-1*zoom);
+        modelePerspective.setZoom(zoom - increment);
     }
 
     @Override

@@ -13,12 +13,17 @@ public class ModelePerspective extends Modele {
 
     private static final long serialVersionUID = 2693092317130168995L;
 
-    private int x;
+    private int x = 0;
 
-    private int y;
+    private int y = 0;
 
-    private int zoom;
+    private int zoom = 100;
 
+    /**
+     * Effectue la translation de la perspective
+     * @param dx deplacement en x
+     * @param dy deplacement en y
+     */
     public void translater(int dx, int dy)
     {
         setX(x + dx);

@@ -1,12 +1,14 @@
 package log121.lab4.app;
 
+import log121.lab4.api.GestionnaireCommandes;
+import log121.lab4.api.ICommande;
 import log121.lab4.api.Modele;
 import log121.lab4.api.Vue;
 
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 /**
@@ -35,16 +37,9 @@ public class ControleurPrincipal {
     }
 
     private void initListeners() {
-        vueTranslation.addMouseListener(new TranslationListener());
     }
 
     private void initVueModel() {
-        modeleImage = new ModeleImage();
-        modelePerspective = new ModelePerspective();
-
-        modeles.add(modeleImage);
-        modeles.add(modelePerspective);
-
         vueZoom = new VueZoom();
         vueGlobale = new VueGlobale();
         vueTranslation = new VueTranslation();
@@ -52,11 +47,6 @@ public class ControleurPrincipal {
         vues.add(vueZoom);
         vues.add(vueGlobale);
         vues.add(vueTranslation);
-
-        for (Modele m : modeles)
-            for (Vue v : vues)
-                m.addObserver(v);
-
     }
 
     private void initComposantes() {
@@ -73,12 +63,61 @@ public class ControleurPrincipal {
 
     }
 
-    private class TranslationListener extends MouseInputAdapter {
+    private class TranslationListener implements MouseListener, MouseMotionListener {
+
         @Override
         public void mouseDragged(MouseEvent e) {
-            modelePerspective.setX(modelePerspective.getX() + e.getX());
-            modelePerspective.setX(modelePerspective.getY() + e.getY());
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
         }
     }
 
+    private class OuvrirListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        }
+    }
+
+    private class SauvegarderListener implements  ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    private class ZoomListener implements MouseWheelListener {
+        @Override
+        public void mouseWheelMoved(MouseWheelEvent e) {
+            GestionnaireCommandes.getInstance().executer(new CommandeZoom(modelePerspective, e.getUnitsToScroll()));
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        new ControleurPrincipal();
+    }
 }
