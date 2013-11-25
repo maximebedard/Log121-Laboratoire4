@@ -9,8 +9,6 @@ public class VueZoom extends Vue {
 
 	private static final long serialVersionUID = 8550598435588018968L;
 
-
-
     @Override
 	public void initComponents() {
         setBackground(Color.ORANGE);

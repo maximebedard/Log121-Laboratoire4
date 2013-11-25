@@ -50,12 +50,6 @@ public class ModeleImage extends Modele {
         setChemin(i.getChemin());
     }
 
-    public void setImage(BufferedImage image) {
-        this.image = image;
-        setChanged();
-        notifyObservers(image);
-    }
-
     public BufferedImage getImage() {
         return image;
     }

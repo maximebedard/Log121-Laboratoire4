@@ -30,6 +30,8 @@ public class ControleurPrincipal {
 
     private JFrame frame;
 
+    private MenuPrincipal menuPrincipal;
+
     public ControleurPrincipal() {
         initVueModel();
         initComposantes();
@@ -54,66 +56,21 @@ public class ControleurPrincipal {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Laboratoire 4");
-        frame.setLayout(new FlowLayout());
+        frame.setLayout(new BorderLayout());
 
-        frame.add(vueGlobale);
-        frame.add(vueZoom);
-        frame.add(vueTranslation);
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
+        panel.add(vueGlobale);
+        panel.add(vueZoom);
+        panel.add(vueTranslation);
+
+
+        menuPrincipal = new MenuPrincipal();
+
+        frame.add(menuPrincipal, BorderLayout.NORTH);
+        frame.add(panel, BorderLayout.CENTER);
+
         frame.pack();
-
-    }
-
-    private class TranslationListener implements MouseListener, MouseMotionListener {
-
-        @Override
-        public void mouseDragged(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseMoved(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-        }
-    }
-
-    private class OuvrirListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-        }
-    }
-
-    private class SauvegarderListener implements  ActionListener
-    {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-        }
-    }
-
-    private class ZoomListener implements MouseWheelListener {
-        @Override
-        public void mouseWheelMoved(MouseWheelEvent e) {
-            GestionnaireCommandes.getInstance().executer(new CommandeZoom(modelePerspective, e.getUnitsToScroll()));
-        }
     }
 
     public static void main(String[] args)
