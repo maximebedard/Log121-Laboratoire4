@@ -4,6 +4,7 @@ import log121.lab4.api.ICommande;
 import log121.lab4.api.Modele;
 import log121.lab4.app.CommandeSauvegarder;
 import log121.lab4.app.ModeleImage;
+import log121.lab4.app.ModelePerspective;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +27,7 @@ public class CommandeSauvegarderTest {
 
     @Before
     public void setUp() throws Exception {
-        commande = new CommandeSauvegarder(new ModeleImage(), TEST_FILE_NAME);
+        commande = new CommandeSauvegarder(new ModeleImage(), new ModelePerspective(), TEST_FILE_NAME);
     }
 
     @Test
@@ -34,17 +35,6 @@ public class CommandeSauvegarderTest {
         commande.executer();
         File testFile = new File(TEST_FILE_NAME);
         assertTrue(testFile.exists());
-
-        try
-        {
-            Modele m = Modele.deserialiser(TEST_FILE_NAME);
-            assertTrue(m instanceof ModeleImage);
-        }
-        catch (Exception ex)
-        {
-            fail(ex.getMessage());
-        }
-
     }
 
     @Test(expected = NotImplementedException.class)

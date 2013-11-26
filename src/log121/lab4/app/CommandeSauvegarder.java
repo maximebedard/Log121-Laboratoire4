@@ -1,34 +1,44 @@
 package log121.lab4.app;
 
-import log121.lab4.api.Modele;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class CommandeSauvegarder extends CommandeAbstraite {
 
-    private final Modele modele;
+    private final ModeleImage modeleImage;
+    private final ModelePerspective modelePerspective;
     private String chemin;
 
-    public CommandeSauvegarder(Modele modele)
+    public CommandeSauvegarder(ModeleImage modeleImage, ModelePerspective modelePerspective)
     {
-        this(modele, null);
+        this(modeleImage, modelePerspective, null);
     }
 
-    public CommandeSauvegarder(Modele modele, String chemin) {
+    public CommandeSauvegarder(ModeleImage modeleImage, ModelePerspective modelePerspective, String chemin) {
         super("app.frame.menus.file.save");
-        this.modele = modele;
+        this.modeleImage = modeleImage;
+        this.modelePerspective = modelePerspective;
         this.chemin = chemin;
     }
 
     @Override
     public void executer() {
         try {
-            Modele.serialiser(modele, chemin);
+            FileOutputStream fileOut = new FileOutputStream(chemin);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+            out.writeObject(modeleImage);
+            out.writeObject(modelePerspective);
+
+            out.close();
+            fileOut.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

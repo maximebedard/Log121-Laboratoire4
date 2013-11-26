@@ -49,8 +49,8 @@ public class ControleurPrincipal {
         vueTranslation = new VueTranslation();
 
         vues.add(vueZoom);
-        vues.add(vueGlobale);
         vues.add(vueTranslation);
+        vues.add(vueGlobale);
 
         for(Modele m : modeles)
             for(Vue v : vues)
@@ -66,14 +66,11 @@ public class ControleurPrincipal {
 
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        panel.add(vueGlobale);
         panel.add(vueZoom);
         panel.add(vueTranslation);
-
-
+        panel.add(vueGlobale);
 
         menuPrincipal = new MenuPrincipal();
-
 
         frame.add(menuPrincipal, BorderLayout.NORTH);
         frame.add(panel, BorderLayout.CENTER);
@@ -141,8 +138,8 @@ public class ControleurPrincipal {
             fichier = creerMenu(
                     "app.frame.menus.file.title",
                     new CommandeAbstraite[] {
-                        new CommandeOuvrir(modeleImage, vues),
-                        new CommandeSauvegarder(modeleImage),
+                        new CommandeOuvrir(modeleImage, modelePerspective),
+                        new CommandeSauvegarder(modeleImage, modelePerspective),
                         new CommandeQuitter()
                     });
             this.add(fichier);

@@ -3,34 +3,30 @@ package log121.lab4.app;
 
 import log121.lab4.api.Gardien;
 import log121.lab4.api.Modele;
-import log121.lab4.api.Vue;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 
 public class CommandeOuvrir extends CommandeAbstraite {
 
     private final Gardien gardien;
-    private final ModeleImage modele;
-    private final ArrayList<Vue> vues;
+    private final ModeleImage modeleImage;
+    private final ModelePerspective modelePerspective;
     private String chemin;
 
-    public CommandeOuvrir(ModeleImage modele, ArrayList<Vue> vues) {
-        this(modele, vues, null);
+    public CommandeOuvrir(ModeleImage modeleImage, ModelePerspective modelePerspective) {
+        this(modeleImage, modelePerspective, null);
     }
 
-    public CommandeOuvrir(ModeleImage modele, ArrayList<Vue> vues, String chemin) {
+    public CommandeOuvrir(ModeleImage modeleImage, ModelePerspective modelePerspective, String chemin) {
         super("app.frame.menus.file.load");
-        this.gardien = new Gardien(modele);
-        this.modele = modele;
-        this.vues = vues;
+        this.modelePerspective = modelePerspective;
+        this.gardien = new Gardien(modeleImage);
+        this.modeleImage = modeleImage;
         this.chemin = chemin;
     }
 
@@ -40,13 +36,23 @@ public class CommandeOuvrir extends CommandeAbstraite {
         String formatEtats = getSupportedStateFormats();
 
         try {
+
             if (chemin.matches(createRegex(formatImages)))
+            {
                 loadImage();
-            else if (chemin.matches(createRegex(formatEtats)))
+                gardien.sauvegarder();
+                return;
+            }
+
+            if (chemin.matches(createRegex(formatEtats)))
+            {
                 loadEtat();
-            else
-                JOptionPane.showMessageDialog(this, String.format("Le format de fichier est invalide. Formats valides : %s,%s",
-                        formatImages, formatEtats));
+                gardien.sauvegarder();
+                return;
+            }
+
+            JOptionPane.showMessageDialog(this, String.format("Le format de fichier est invalide. Formats valides : %s,%s",
+                formatImages, formatEtats));
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getLocalizedMessage());
@@ -55,13 +61,25 @@ public class CommandeOuvrir extends CommandeAbstraite {
     }
 
     private void loadImage() throws Exception {
-        modele.setChemin(chemin);
-        modele.setImage(ImageIO.read(new File(chemin)));
+        modeleImage.setChemin(chemin);
+        modeleImage.setImage(ImageIO.read(new File(chemin)));
     }
 
     private void loadEtat() throws Exception {
-        ModeleImage copie = (ModeleImage)Modele.deserialiser(chemin);
-        modele.restaurerMemento(copie.creerMemento());
+
+        FileInputStream fis = new FileInputStream(chemin);
+
+        ObjectInputStream ois = new ObjectInputStream(fis);
+
+        ModeleImage copieImage = (ModeleImage)ois.readObject();
+        ModelePerspective copiePerspective = (ModelePerspective)ois.readObject();
+
+        ois.close();
+        fis.close();
+
+        modeleImage.restaurerMemento(copieImage.creerMemento());
+        modelePerspective.restaurerMemento(copiePerspective.creerMemento());
+
     }
 
     private static String getSupportedImageFormats() {
@@ -82,7 +100,8 @@ public class CommandeOuvrir extends CommandeAbstraite {
 
     @Override
     public void annuler() {
-        gardien.annuler();
+        if(gardien.possedeAnnuler())
+            gardien.annuler();
     }
 
     @Override

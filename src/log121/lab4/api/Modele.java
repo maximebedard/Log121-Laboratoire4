@@ -22,28 +22,4 @@ public abstract class Modele extends Observable implements IOriginateur, IClonea
             return null;
         }
     }
-
-
-    public static void serialiser(Modele m, String chemin) throws IOException {
-
-        FileOutputStream fileOut = new FileOutputStream(chemin);
-
-        ObjectOutputStream out = new ObjectOutputStream(fileOut);
-        out.writeObject(m);
-        out.close();
-
-        fileOut.close();
-
-    }
-
-    public static Modele deserialiser(String chemin) throws IOException, ClassNotFoundException {
-
-        FileInputStream fis = new FileInputStream(chemin);
-
-        ObjectInputStream ois = new ObjectInputStream(fis);
-
-        return (Modele)ois.readObject();
-
-    }
-
 }

@@ -2,22 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12e63540-a5f9-4271-ae1f-e796584275fc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/log121/lab4/app/ModeleFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/log121/lab4/app/ModeleType.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/CommandeAide.java" afterPath="$PROJECT_DIR$/src/log121/lab4/app/CommandeAide.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/CommandeOuvrir.java" afterPath="$PROJECT_DIR$/src/log121/lab4/app/CommandeOuvrir.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/CommandeQuitter.java" afterPath="$PROJECT_DIR$/src/log121/lab4/app/CommandeQuitter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/CommandeRedo.java" afterPath="$PROJECT_DIR$/src/log121/lab4/app/CommandeRedo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/CommandeSauvegarder.java" afterPath="$PROJECT_DIR$/src/log121/lab4/app/CommandeSauvegarder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/CommandeTranslation.java" afterPath="$PROJECT_DIR$/src/log121/lab4/app/CommandeTranslation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/CommandeUndo.java" afterPath="$PROJECT_DIR$/src/log121/lab4/app/CommandeUndo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/CommandeZoom.java" afterPath="$PROJECT_DIR$/src/log121/lab4/app/CommandeZoom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/tests/CommandeSauvegarderTest.java" afterPath="$PROJECT_DIR$/src/log121/lab4/app/tests/CommandeSauvegarderTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/ControleurPrincipal.java" afterPath="$PROJECT_DIR$/src/log121/lab4/app/ControleurPrincipal.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/api/Modele.java" afterPath="$PROJECT_DIR$/src/log121/lab4/api/Modele.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/ModeleImage.java" afterPath="$PROJECT_DIR$/src/log121/lab4/app/ModeleImage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/VueGlobale.java" afterPath="$PROJECT_DIR$/src/log121/lab4/app/VueGlobale.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/VueTranslation.java" afterPath="$PROJECT_DIR$/src/log121/lab4/app/VueTranslation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/VueZoom.java" afterPath="$PROJECT_DIR$/src/log121/lab4/app/VueZoom.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log121/lab4/app/app_fr.properties" afterPath="$PROJECT_DIR$/src/log121/lab4/app/app_fr.properties" />
     </list>
     <ignored path="Log121-Laboratoire4.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,13 +21,13 @@
     <file path="/Perspective.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385063977033" ignored="false" />
     <file path="/Image.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385064645216" ignored="false" />
     <file path="/Vue.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385057041534" ignored="false" />
-    <file path="/ControleurPrincipal.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385487356959" ignored="false" />
+    <file path="/ControleurPrincipal.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385494296846" ignored="false" />
     <file path="/CommandeTranslation.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385405992727" ignored="false" />
     <file path="/CommandeZoom.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385485732167" ignored="false" />
-    <file path="/CommandeSauvegarder.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385485447295" ignored="false" />
+    <file path="/CommandeSauvegarder.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385495025901" ignored="false" />
     <file path="/Gardien.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385050436350" ignored="false" />
     <file path="/Memento.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1384892461223" ignored="false" />
-    <file path="/CommandeOuvrir.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385486151541" ignored="false" />
+    <file path="/CommandeOuvrir.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385494197965" ignored="false" />
     <file path="/CommandeOuvrirSauvegarde.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1384552916952" ignored="false" />
     <file path="/ControleurPerspective.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1384631527549" ignored="false" />
     <file path="/ControleurImage.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385041657581" ignored="false" />
@@ -52,7 +42,7 @@
     <file path="/MementoTest.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1384874549305" ignored="false" />
     <file path="/AttrModifieEvenement.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1384883773223" ignored="false" />
     <file path="/ISujet.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1384875667766" ignored="false" />
-    <file path="/CommandeSauvegarderTest.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385041259731" ignored="false" />
+    <file path="/CommandeSauvegarderTest.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385494244699" ignored="false" />
     <file path="/CommandeOuvrirTest.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1384884395944" ignored="false" />
     <file path="/CommandeTranslationTest.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1384882583254" ignored="false" />
     <file path="/Sujet.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1384883908452" ignored="false" />
@@ -61,7 +51,7 @@
     <file path="/VueGlobale.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385491659929" ignored="false" />
     <file path="/VueTranslation.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385491654321" ignored="false" />
     <file path="/VueZoom.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385491806979" ignored="false" />
-    <file path="/ModeleImage.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385483841214" ignored="false" />
+    <file path="/ModeleImage.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385494722912" ignored="false" />
     <file path="/CommandeNouveau.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385405300736" ignored="false" />
     <file path="/ModelePerspective.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385334217793" ignored="false" />
     <file path="/ModeleFactory.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385336401457" ignored="false" />
@@ -81,7 +71,7 @@
     <file path="/JMenuItemCommande.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385404276113" ignored="false" />
     <file path="/CommandeAbstraite.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385405635196" ignored="false" />
     <file path="/CommandeAide.java" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385477676661" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385492744239" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="12e63540-a5f9-4271-ae1f-e796584275fc" time="1385496102643" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +131,26 @@
     <favorites_list name="Log121-Laboratoire4" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="CommandeSauvegarder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/CommandeSauvegarder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="45" selection-start="1264" selection-end="1264" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandeOuvrir.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/CommandeOuvrir.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="118" column="29" selection-start="3285" selection-end="3285" vertical-scroll-proportion="1.4502814">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -159,22 +168,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/log121/lab4/app/CommandeNouveau.java" />
-        <option value="$PROJECT_DIR$/src/log121/lab4/app/CommandeAbstraite.java" />
         <option value="$PROJECT_DIR$/src/log121/lab4/app/CommandeTranslation.java" />
         <option value="$PROJECT_DIR$/src/log121/lab4/app/CommandeQuitter.java" />
         <option value="$PROJECT_DIR$/src/log121/lab4/app/CommandeAide.java" />
         <option value="$PROJECT_DIR$/src/log121/lab4/app/app_fr.properties" />
-        <option value="$PROJECT_DIR$/src/log121/lab4/app/ModeleImage.java" />
-        <option value="$PROJECT_DIR$/src/log121/lab4/app/CommandeSauvegarder.java" />
         <option value="$PROJECT_DIR$/src/log121/lab4/app/CommandeRedo.java" />
         <option value="$PROJECT_DIR$/src/log121/lab4/app/CommandeUndo.java" />
         <option value="$PROJECT_DIR$/src/log121/lab4/app/CommandeZoom.java" />
-        <option value="$PROJECT_DIR$/src/log121/lab4/app/CommandeOuvrir.java" />
-        <option value="$PROJECT_DIR$/src/log121/lab4/app/ControleurPrincipal.java" />
         <option value="$PROJECT_DIR$/src/log121/lab4/app/VueTranslation.java" />
         <option value="$PROJECT_DIR$/src/log121/lab4/app/VueGlobale.java" />
         <option value="$PROJECT_DIR$/src/log121/lab4/app/VueZoom.java" />
+        <option value="$PROJECT_DIR$/src/log121/lab4/app/CommandeOuvrir.java" />
+        <option value="$PROJECT_DIR$/src/log121/lab4/app/tests/CommandeSauvegarderTest.java" />
+        <option value="$PROJECT_DIR$/src/log121/lab4/api/Modele.java" />
+        <option value="$PROJECT_DIR$/src/log121/lab4/app/ControleurPrincipal.java" />
+        <option value="$PROJECT_DIR$/src/log121/lab4/app/ModeleImage.java" />
+        <option value="$PROJECT_DIR$/src/log121/lab4/app/CommandeSauvegarder.java" />
       </list>
     </option>
   </component>
@@ -499,6 +508,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Log121-Laboratoire4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Log121-Laboratoire4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="log121.lab4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -844,21 +875,42 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/CommandeAide.java">
+    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/VueZoom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="95" selection-start="394" selection-end="394" vertical-scroll-proportion="0.42213884">
+        <state line="14" column="11" selection-start="286" selection-end="286" vertical-scroll-proportion="0.028142588">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/CommandeTranslation.java">
+    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/CommandeZoom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="129" selection-end="129" vertical-scroll-proportion="0.19699812">
+        <state line="43" column="33" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.521576">
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/tests/CommandeOuvrirTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="13" selection-start="329" selection-end="329" vertical-scroll-proportion="0.2532833">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/tests/CommandeTranslationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="224" selection-end="224" vertical-scroll-proportion="0.028142588">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/tests/CommandeZoomTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="200" selection-end="200" vertical-scroll-proportion="0.15572232">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -871,30 +923,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/CommandeRedo.java">
+    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/tests/CommandeSauvegarderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="54" selection-start="379" selection-end="379" vertical-scroll-proportion="0.39399624">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="32" column="61" selection-start="798" selection-end="798" vertical-scroll-proportion="0.48039216">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/CommandeUndo.java">
+    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/ControleurPrincipal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="54" selection-start="474" selection-end="474" vertical-scroll-proportion="0.5628518">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="73" column="0" selection-start="1811" selection-end="1811" vertical-scroll-proportion="1.913696">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/CommandeZoom.java">
+    <entry file="file://$PROJECT_DIR$/src/log121/lab4/api/Modele.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="33" selection-start="1075" selection-end="1075" vertical-scroll-proportion="1.2101313">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="23" column="5" selection-start="533" selection-end="533" vertical-scroll-proportion="0.619137">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/CommandeTranslation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="9" selection-start="775" selection-end="775" vertical-scroll-proportion="0.4371482">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/log121/lab4/api/IOriginateur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="17" selection-start="43" selection-end="43" vertical-scroll-proportion="0.056285176">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -905,60 +965,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/CommandeSauvegarder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="28" selection-start="1621" selection-end="1621" vertical-scroll-proportion="1.5196998">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/ControleurPrincipal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="53" selection-start="1360" selection-end="1360" vertical-scroll-proportion="0.38086304">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/log121/lab4/api/Vue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="22" selection-start="98" selection-end="98" vertical-scroll-proportion="0.11257035">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/VueZoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="11" selection-start="286" selection-end="286" vertical-scroll-proportion="-0.12570356">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/VueTranslation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="9" selection-start="265" selection-end="265" vertical-scroll-proportion="0.2251407">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/ModeleImage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="51" selection-start="862" selection-end="862" vertical-scroll-proportion="0.7879925">
+        <state line="20" column="10" selection-start="460" selection-end="460" vertical-scroll-proportion="-0.09756097">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/ModelePerspective.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="13" selection-start="103" selection-end="103" vertical-scroll-proportion="-1.7298311">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/CommandeSauvegarder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="45" selection-start="1264" selection-end="1264" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/CommandeOuvrir.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="62" selection-start="3114" selection-end="3114" vertical-scroll-proportion="0.7185741">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/log121/lab4/app/VueGlobale.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="15" selection-start="526" selection-end="526" vertical-scroll-proportion="0.54971856">
+        <state line="118" column="29" selection-start="3285" selection-end="3285" vertical-scroll-proportion="1.4502814">
           <folding />
         </state>
       </provider>

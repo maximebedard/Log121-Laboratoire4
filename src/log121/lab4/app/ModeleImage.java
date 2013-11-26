@@ -14,7 +14,7 @@ public class ModeleImage extends Modele {
 
     private static final long serialVersionUID = -679409394432923243L;
 
-    private BufferedImage image;
+    private transient BufferedImage image;
 
     private String chemin;
 
