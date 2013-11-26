@@ -67,15 +67,20 @@ public class ControleurPrincipal {
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.add(vueZoom);
+<<<<<<< HEAD
         panel.add(vueTranslation);
         panel.add(vueGlobale);
+=======
+        panel.add(vueTranslation).addMouseMotionListener(new CommandeTranslation(modelePerspective));
+
+>>>>>>> Added translation
 
         menuPrincipal = new MenuPrincipal();
 
         frame.add(menuPrincipal, BorderLayout.NORTH);
         frame.add(panel, BorderLayout.CENTER);
 
-        frame.setSize(800,400);
+        frame.setSize(1200,800);
         frame.setResizable(false);
     }
 

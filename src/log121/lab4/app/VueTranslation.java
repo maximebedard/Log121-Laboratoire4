@@ -3,10 +3,11 @@ package log121.lab4.app;
 import log121.lab4.api.Vue;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.Observable;
 
-public class VueTranslation extends Vue {
+public class VueTranslation extends Vue{
 
     private static final long serialVersionUID = 5404684093209799162L;
 
@@ -15,7 +16,7 @@ public class VueTranslation extends Vue {
 
     @Override
     public void initComponents() {
-        setBounds(0, 0, 400, 400);
+        setBounds(0, 0, 600, 800);
         setBackground(Color.YELLOW);
     }
 

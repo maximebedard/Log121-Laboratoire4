@@ -4,10 +4,12 @@ import log121.lab4.api.Gardien;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.JOptionPane;
+
 public class CommandeZoom extends CommandeAbstraite {
 
     private final ModelePerspective modelePerspective;
-    private final int increment;
+    private int increment;
     private final Gardien gardien;
 
     public CommandeZoom(ModelePerspective modelePerspective)
@@ -48,7 +50,10 @@ public class CommandeZoom extends CommandeAbstraite {
     }
 
     private void promptZoom() {
-
+    	Integer _increment = Integer.parseInt(JOptionPane.showInputDialog("Veuillez entree le poucentage de l'incrementation"));
+    	
+    	if(_increment != null)
+    		this.increment = _increment;
     }
 
 }
