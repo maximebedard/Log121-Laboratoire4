@@ -10,8 +10,6 @@ public class CommandeTranslation extends CommandeAbstraite {
 
     private final int dy;
 
-    private final Gardien gardien;
-
     public CommandeTranslation(ModelePerspective modelePerspective)
     {
         // TODO : Ajouter input box ici
@@ -21,7 +19,6 @@ public class CommandeTranslation extends CommandeAbstraite {
     public CommandeTranslation(ModelePerspective modelePerspective, int dx, int dy)
     {
         super("app.frame.menus.transform.translate");
-        gardien = new Gardien(modelePerspective);
         this.modelePerspective = modelePerspective;
         this.dx = dx;
         this.dy = dy;
@@ -29,13 +26,7 @@ public class CommandeTranslation extends CommandeAbstraite {
 
     @Override
     public void executer() {
-        gardien.sauvegarder();
         modelePerspective.translater(dx, dy);
-    }
-
-    @Override
-    public void annuler() {
-        gardien.annuler();
     }
 
     @Override

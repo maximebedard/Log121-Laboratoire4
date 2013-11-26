@@ -1,10 +1,16 @@
 package log121.lab4.app;
 
+import log121.lab4.api.Gardien;
+import log121.lab4.api.MenuAdapter;
 import log121.lab4.api.Modele;
 import log121.lab4.api.Vue;
 
 import javax.swing.*;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
@@ -44,6 +50,11 @@ public class ControleurPrincipal {
         modeles.add(modeleImage);
         modeles.add(modelePerspective);
 
+        GestionnaireCommandes comMananger = GestionnaireCommandes.getInstance();
+        comMananger.ajouterGardien(new Gardien(modeleImage));
+        comMananger.ajouterGardien(new Gardien(modelePerspective));
+
+
         vueZoom = new VueZoom();
         vueGlobale = new VueGlobale();
         vueTranslation = new VueTranslation();
@@ -70,92 +81,14 @@ public class ControleurPrincipal {
         panel.add(vueTranslation);
         panel.add(vueGlobale);
 
-        menuPrincipal = new MenuPrincipal();
+        menuPrincipal = new MenuPrincipal(modeleImage, modelePerspective);
 
         frame.add(menuPrincipal, BorderLayout.NORTH);
         frame.add(panel, BorderLayout.CENTER);
 
-        frame.setSize(800,400);
+        frame.setSize(800, 400);
         frame.setResizable(false);
     }
-
-
-
-
-    private class MenuPrincipal extends JMenuBar
-    {
-
-        private JMenu fichier;
-
-        private JMenu edition;
-
-        private JMenu transformation;
-
-        private JMenu aide;
-
-
-        public MenuPrincipal() {
-            creerMenuFichier();
-            creerMenuEdition();
-            creerMenuTransformation();
-            creerMenuAide();
-        }
-
-        private void creerMenuAide() {
-            aide = creerMenu(
-                    "app.frame.menus.help.title",
-                    new CommandeAbstraite[]{
-                        new CommandeAide()
-                    });
-
-            this.add(aide);
-        }
-
-        private void creerMenuTransformation() {
-            transformation = creerMenu(
-                    "app.frame.menus.transform.title",
-                    new CommandeAbstraite[]{
-                            new CommandeTranslation(modelePerspective),
-                            new CommandeZoom(modelePerspective)
-                    });
-
-            this.add(transformation);
-        }
-
-        private void creerMenuEdition() {
-
-            edition = creerMenu(
-                    "app.frame.menus.edition.title",
-                    new CommandeAbstraite[]{
-                            new CommandeUndo(),
-                            new CommandeRedo()
-                    });
-
-            this.add(edition);
-        }
-
-        private void creerMenuFichier() {
-            fichier = creerMenu(
-                    "app.frame.menus.file.title",
-                    new CommandeAbstraite[] {
-                        new CommandeOuvrir(modeleImage, modelePerspective),
-                        new CommandeSauvegarder(modeleImage, modelePerspective),
-                        new CommandeQuitter()
-                    });
-            this.add(fichier);
-        }
-
-
-        private JMenu creerMenu(String resourceKey, CommandeAbstraite[] commandeAbstraites) {
-            JMenu menu = new JMenu(ResourceManager.getResource(resourceKey));
-            for (CommandeAbstraite key : commandeAbstraites)
-            {
-                menu.add(key);
-            }
-            return menu;
-        }
-    }
-
 
     public static void main(String[] args)
     {

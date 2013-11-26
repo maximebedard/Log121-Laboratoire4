@@ -69,11 +69,6 @@ public class CommandeSauvegarder extends CommandeAbstraite {
     }
 
     @Override
-    public void annuler() {
-        throw new NotImplementedException();
-    }
-
-    @Override
     public boolean annulable() {
         return false;
     }
