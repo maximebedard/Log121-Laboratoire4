@@ -6,11 +6,6 @@ public interface ICommande {
 	 * Execute la commande
 	 */
 	void executer();
-	
-	/**
-	 * Annule la commande (effectue l'opération inverse)
-	 */
-	void annuler();
 
     /**
      * Définit si l'opération est annulable (peut-être annulé)

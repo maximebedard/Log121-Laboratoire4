@@ -6,6 +6,7 @@ import log121.lab4.api.Modele;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -40,14 +41,19 @@ public class ModeleImage extends Modele {
 
     public void setChemin(String chemin) {
         this.chemin = chemin;
+        loadImage();
         setChanged();
         notifyObservers(chemin);
     }
 
+    private void loadImage()
+    {
+        try {
+            image = ImageIO.read(new File(getChemin()));
+        } catch (Exception e) {
+            image = null;
+        }
 
-    public void setImage(BufferedImage image) {
-        this.image = image;
-        setChanged();
-        notifyObservers(image);
     }
+
 }

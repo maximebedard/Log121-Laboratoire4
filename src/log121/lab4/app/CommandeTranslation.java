@@ -28,7 +28,6 @@ public class CommandeTranslation extends CommandeAbstraite implements MouseMotio
     public CommandeTranslation(ModelePerspective modelePerspective, int dx, int dy)
     {
         super("app.frame.menus.transform.translate");
-        gardien = new Gardien(modelePerspective);
         this.modelePerspective = modelePerspective;        
         this.dx = dx;
         this.dy = dy;       
@@ -37,13 +36,7 @@ public class CommandeTranslation extends CommandeAbstraite implements MouseMotio
 
     @Override
     public void executer() {
-        gardien.sauvegarder();
         modelePerspective.translater(dx, dy);        
-    }
-
-    @Override
-    public void annuler() {
-        gardien.annuler();
     }
 
     @Override
@@ -58,8 +51,8 @@ public class CommandeTranslation extends CommandeAbstraite implements MouseMotio
     }
     
     private void commandeTranslation(){
-    	Integer _dx = Integer.parseInt(JOptionPane.showInputDialog("Veuillez insérer la coordonnée x:"));
-        Integer _dy = Integer.parseInt(JOptionPane.showInputDialog("Veuillez insérer la coordonnée y:"));
+    	Integer _dx = Integer.parseInt(JOptionPane.showInputDialog("Veuillez insÃ©rer la coordonnÃ©e x:"));
+        Integer _dy = Integer.parseInt(JOptionPane.showInputDialog("Veuillez insÃ©rer la coordonnÃ©e y:"));
         
         if(_dx != null && _dy != null){
         	this.dx = _dx;

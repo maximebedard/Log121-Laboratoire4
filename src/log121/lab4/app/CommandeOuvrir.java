@@ -62,7 +62,6 @@ public class CommandeOuvrir extends CommandeAbstraite {
 
     private void loadImage() throws Exception {
         modeleImage.setChemin(chemin);
-        modeleImage.setImage(ImageIO.read(new File(chemin)));
     }
 
     private void loadEtat() throws Exception {
@@ -96,12 +95,6 @@ public class CommandeOuvrir extends CommandeAbstraite {
 
     private String createRegex(String formats) {
         return ".*\\.(" + formats.replace(',', '|') + ")$";
-    }
-
-    @Override
-    public void annuler() {
-        if(gardien.possedeAnnuler())
-            gardien.annuler();
     }
 
     @Override

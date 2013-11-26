@@ -10,7 +10,6 @@ public class CommandeZoom extends CommandeAbstraite {
 
     private final ModelePerspective modelePerspective;
     private int increment;
-    private final Gardien gardien;
 
     public CommandeZoom(ModelePerspective modelePerspective)
     {
@@ -19,20 +18,13 @@ public class CommandeZoom extends CommandeAbstraite {
 
     public CommandeZoom(ModelePerspective modelePerspective, int increment) {
         super("app.frame.menus.transform.zoom");
-        gardien = new Gardien(modelePerspective);
         this.modelePerspective = modelePerspective;
         this.increment = increment;
     }
 
     @Override
     public void executer() {
-        gardien.sauvegarder();
         modelePerspective.setZoom(modelePerspective.getZoom() + increment);
-    }
-
-    @Override
-    public void annuler() {
-        gardien.annuler();
     }
 
     @Override
