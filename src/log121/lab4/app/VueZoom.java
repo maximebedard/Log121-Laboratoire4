@@ -17,7 +17,7 @@ public class VueZoom extends Vue {
 
     @Override
 	public void initComponents() {
-        setBounds(400, 0, 400, 400);
+        setBounds(600, 0, 800, 800);
         setBackground(Color.ORANGE);
 	}
 
