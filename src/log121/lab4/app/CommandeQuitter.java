@@ -1,10 +1,7 @@
 package log121.lab4.app;
 
 
-import log121.lab4.api.ICommande;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import javax.swing.*;
 
 public class CommandeQuitter extends CommandeAbstraite {
 

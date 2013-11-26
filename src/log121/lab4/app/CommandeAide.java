@@ -3,6 +3,8 @@ package log121.lab4.app;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.swing.*;
+
 public class CommandeAide extends CommandeAbstraite
 {
     public CommandeAide() {
@@ -11,8 +13,7 @@ public class CommandeAide extends CommandeAbstraite
 
     @Override
     public void executer() {
-        System.out.println("asDASDAS");
-        // TODO
+        JOptionPane.showMessageDialog(null, ResourceManager.getResource("app.frame.dialog.about"));
     }
 
     @Override

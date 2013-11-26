@@ -1,24 +1,22 @@
 package log121.lab4.app;
 
-import log121.lab4.api.ICommande;
 import log121.lab4.api.Modele;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.swing.*;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 
 public class CommandeSauvegarder extends CommandeAbstraite {
 
     private final Modele modele;
-    private final String chemin;
+    private String chemin;
 
     public CommandeSauvegarder(Modele modele)
     {
-        // todo : ajouter input box
-        this(modele, "");
+        this(modele, null);
     }
 
     public CommandeSauvegarder(Modele modele, String chemin) {
@@ -34,6 +32,30 @@ public class CommandeSauvegarder extends CommandeAbstraite {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public void promptChemin()
+    {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        FileFilter filter = new FileNameExtensionFilter("Laboratoire 4", "lab4");
+        fileChooser.setFileFilter(filter);
+
+        int returnVal = fileChooser.showSaveDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            chemin = fileChooser.getSelectedFile().getAbsolutePath();
+        } else {
+            chemin = null;
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        promptChemin();
+        if(chemin == null)
+            return;
+        super.actionPerformed(e);
     }
 
     @Override

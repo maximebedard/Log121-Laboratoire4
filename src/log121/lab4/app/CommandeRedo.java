@@ -1,9 +1,8 @@
 package log121.lab4.app;
 
 
-import log121.lab4.api.ICommande;
-
-import javax.swing.*;
+import log121.lab4.api.GestionnaireCommandes;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class CommandeRedo extends CommandeAbstraite {
 
@@ -13,17 +12,16 @@ public class CommandeRedo extends CommandeAbstraite {
 
     @Override
     public void executer() {
-        // todo
+        GestionnaireCommandes.getInstance().refaire();
     }
 
     @Override
     public void annuler() {
-        // todo
+        throw new NotImplementedException();
     }
 
     @Override
     public boolean annulable() {
-        // todo
         return false;
     }
 }

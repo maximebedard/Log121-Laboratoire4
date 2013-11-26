@@ -1,14 +1,10 @@
 package log121.lab4.app;
 
-import log121.lab4.api.GestionnaireCommandes;
-import log121.lab4.api.ICommande;
 import log121.lab4.api.Modele;
 import log121.lab4.api.Vue;
 
 import javax.swing.*;
-import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
-import java.awt.event.*;
 import java.util.ArrayList;
 
 /**
@@ -65,11 +61,11 @@ public class ControleurPrincipal {
         frame = new JFrame();
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Laboratoire 4");
+        frame.setTitle(ResourceManager.getResource("app.frame.title"));
         frame.setLayout(new BorderLayout());
 
         JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout());
+        panel.setLayout(null);
         panel.add(vueGlobale);
         panel.add(vueZoom);
         panel.add(vueTranslation);
@@ -82,7 +78,8 @@ public class ControleurPrincipal {
         frame.add(menuPrincipal, BorderLayout.NORTH);
         frame.add(panel, BorderLayout.CENTER);
 
-        frame.pack();
+        frame.setSize(800,400);
+        frame.setResizable(false);
     }
 
 

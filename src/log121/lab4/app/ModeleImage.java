@@ -12,31 +12,11 @@ import java.util.Observer;
 
 public class ModeleImage extends Modele {
 
-    public ModeleImage() {
-        addObserver(new Observer() {
-            @Override
-            public void update(Observable o, Object arg) {
-                loadImage(getChemin());
-            }
-        });
-    }
-
     private static final long serialVersionUID = -679409394432923243L;
 
     private BufferedImage image;
 
     private String chemin;
-
-    private final ArrayList<ModelePerspective> perspectives = new ArrayList<ModelePerspective>();
-
-    private void loadImage(String chemin) {
-        try {
-            image = ImageIO.read(new File(chemin));
-
-        } catch (Exception ex) {
-            image = null;
-        }
-    }
 
     @Override
     public void restaurerMemento(Memento m) {
@@ -64,16 +44,10 @@ public class ModeleImage extends Modele {
         notifyObservers(chemin);
     }
 
-    public ArrayList<ModelePerspective> getPerspectives() {
-        return perspectives;
-    }
 
-    public void ajouterPerspective(ModelePerspective perspective) {
-        perspectives.add(perspective);
+    public void setImage(BufferedImage image) {
+        this.image = image;
+        setChanged();
+        notifyObservers(image);
     }
-
-    public void enleverPerspective(ModelePerspective perspective) {
-        perspectives.remove(perspective);
-    }
-
 }
