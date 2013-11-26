@@ -9,8 +9,7 @@ import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +17,7 @@ import java.util.ArrayList;
  * Date: 11/21/2013
  * Time: 2:53 PM
  */
-public class ControleurPrincipal {
+public class ControleurPrincipal extends JFrame {
 
     private VueZoom vueZoom;
     private VueGlobale vueGlobale;
@@ -30,9 +29,8 @@ public class ControleurPrincipal {
     private ArrayList<Vue> vues = new ArrayList<Vue>();
     private ArrayList<Modele> modeles = new ArrayList<Modele>();
 
-    private JFrame frame;
-
     private MenuPrincipal menuPrincipal;
+    private JLayeredPane content;
 
     public ControleurPrincipal() {
         initVueModel();
@@ -41,6 +39,7 @@ public class ControleurPrincipal {
     }
 
     private void initListeners() {
+        vueTranslation.addMouseMotionListener(new CommandeTranslation(modelePerspective));
     }
 
     private void initVueModel() {
@@ -69,34 +68,26 @@ public class ControleurPrincipal {
     }
 
     private void initComposantes() {
-        frame = new JFrame();
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle(ResourceManager.getResource("app.frame.title"));
-        frame.setLayout(new BorderLayout());
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle(ResourceManager.getResource("app.frame.title"));
+        setLayout(new BorderLayout());
 
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
-        panel.add(vueZoom);
-<<<<<<< HEAD
-        panel.add(vueTranslation);
-        panel.add(vueGlobale);
-=======
-        panel.add(vueTranslation).addMouseMotionListener(new CommandeTranslation(modelePerspective));
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vueZoom, vueTranslation);
+        splitPane.setBounds(0,0,1200, 800);
 
->>>>>>> Added translation
+        content = new JLayeredPane();
+
+        content.add(splitPane, JLayeredPane.DEFAULT_LAYER);
+        content.add(vueGlobale, JLayeredPane.MODAL_LAYER);
+
 
         menuPrincipal = new MenuPrincipal(modeleImage, modelePerspective);
 
-        frame.add(menuPrincipal, BorderLayout.NORTH);
-        frame.add(panel, BorderLayout.CENTER);
+        add(menuPrincipal, BorderLayout.NORTH);
+        add(content, BorderLayout.CENTER);
 
-<<<<<<< HEAD
-        frame.setSize(800, 400);
-=======
-        frame.setSize(1200,800);
->>>>>>> master
-        frame.setResizable(false);
+        setSize(1200, 800);
     }
 
     public static void main(String[] args)

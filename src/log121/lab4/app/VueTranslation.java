@@ -16,7 +16,7 @@ public class VueTranslation extends Vue{
 
     @Override
     public void initComponents() {
-        setBounds(0, 0, 600, 800);
+        setMinimumSize(new Dimension(400, 800));
         setBackground(Color.YELLOW);
     }
 

@@ -1,13 +1,9 @@
 package log121.lab4.app;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-
-import javax.swing.JOptionPane;
-
-import log121.lab4.api.Gardien;
-import log121.lab4.api.GestionnaireCommandes;
 
 public class CommandeTranslation extends CommandeAbstraite implements MouseMotionListener{
 
@@ -16,8 +12,6 @@ public class CommandeTranslation extends CommandeAbstraite implements MouseMotio
     private int dx;
 
     private int dy;
-
-    private final Gardien gardien;    
    
 
     public CommandeTranslation(ModelePerspective modelePerspective)

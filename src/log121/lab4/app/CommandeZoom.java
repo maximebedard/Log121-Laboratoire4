@@ -1,10 +1,7 @@
 package log121.lab4.app;
 
-import log121.lab4.api.Gardien;
-
+import javax.swing.*;
 import java.awt.event.ActionEvent;
-
-import javax.swing.JOptionPane;
 
 public class CommandeZoom extends CommandeAbstraite {
 

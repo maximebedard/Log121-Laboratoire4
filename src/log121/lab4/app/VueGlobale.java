@@ -15,6 +15,7 @@ public class VueGlobale extends Vue {
     @Override
 	public void initComponents() {
         setBounds(0,0,100,100);
+        setOpaque(false);
 	}
 
     @Override
