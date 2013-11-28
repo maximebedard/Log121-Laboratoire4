@@ -72,26 +72,30 @@ public class ControleurPrincipal extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle(ResourceManager.getResource("app.frame.title"));
         setLayout(new BorderLayout());
+        setSize(new Dimension(800,600));
 
-        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, vueZoom, vueTranslation);
-        splitPane.setBounds(0,0,1200, 800);
+        JPanel container = new JPanel();
+        JPanel bottomPanel = new JPanel();
 
-        content = new JLayeredPane();
+        container.setLayout(new GridLayout(2, 1));
+        bottomPanel.setLayout(new GridLayout(1, 2));
 
-        content.add(splitPane, JLayeredPane.DEFAULT_LAYER);
-        content.add(vueGlobale, JLayeredPane.MODAL_LAYER);
-
+        bottomPanel.add(vueTranslation);
+        bottomPanel.add(vueZoom);
+        container.add(vueGlobale);
+        container.add(bottomPanel);
 
         menuPrincipal = new MenuPrincipal(modeleImage, modelePerspective);
 
         add(menuPrincipal, BorderLayout.NORTH);
-        add(content, BorderLayout.CENTER);
-
-        setSize(1200, 800);
+        add(container, BorderLayout.CENTER);
+        setResizable(false);
     }
+
 
     public static void main(String[] args)
     {
         new ControleurPrincipal();
     }
+
 }

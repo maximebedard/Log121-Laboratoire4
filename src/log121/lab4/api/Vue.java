@@ -1,15 +1,25 @@
 package log121.lab4.api;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.util.Observer;
 
 public abstract class Vue extends JPanel implements Observer {
 
-    protected Vue()
-	{
-        initComponents();
-	}
+    private static Font DEFAULT_FONT = new Font("Serif", Font.PLAIN, 32);
 
-	protected abstract void initComponents();
+    protected void drawString(String str, Graphics g) {
+        Graphics2D graphics = (Graphics2D)g;
+
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics.setFont(DEFAULT_FONT);
+
+        FontMetrics fontMetrics = graphics.getFontMetrics(DEFAULT_FONT);
+        Rectangle2D rect = fontMetrics.getStringBounds(str, graphics);
+        graphics.drawString(str, (int) (this.getWidth() - rect.getWidth()), (int) (this.getHeight() - fontMetrics.getAscent()));
+
+    }
+
 
 }

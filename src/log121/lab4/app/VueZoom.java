@@ -14,13 +14,6 @@ public class VueZoom extends Vue {
 
     private Image image;
 
-
-    @Override
-	public void initComponents() {
-        setMinimumSize(new Dimension(400, 800));
-        setBackground(Color.ORANGE);
-	}
-
     @Override
     public void update(Observable o, Object arg) {
 
@@ -43,6 +36,10 @@ public class VueZoom extends Vue {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
+
+        if(image == null) return;
+
         g.drawImage(image, x, y, null);
+        drawString(String.format("Zoom : %d", zoom),g);
     }
 }

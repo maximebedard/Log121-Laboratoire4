@@ -14,12 +14,6 @@ public class VueTranslation extends Vue{
     Image image;
     int x, y;
 
-    @Override
-    public void initComponents() {
-        setMinimumSize(new Dimension(400, 800));
-        setBackground(Color.YELLOW);
-    }
-
 
     @Override
     public void update(Observable o, Object arg) {
@@ -39,6 +33,10 @@ public class VueTranslation extends Vue{
     @Override
     public void paint(Graphics g) {
         super.paint(g);
+
+        if(image == null) return;
+
         g.drawImage(image, x, y, null);
+        drawString(String.format("(%d, %d)", x, y), g);
     }
 }
