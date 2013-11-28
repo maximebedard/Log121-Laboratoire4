@@ -26,8 +26,8 @@ public class ModelePerspective extends Modele {
      */
     public void translater(int dx, int dy)
     {
-        setX(x + dx);
-        setY(y + dy);
+        setX(dx);
+        setY(dy);
     }
 
     /**

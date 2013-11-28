@@ -25,6 +25,7 @@ public class VueTranslation extends Vue{
             ModelePerspective p = ((ModelePerspective) o);
             x = p.getX();
             y = p.getY();
+            
         }
 
         repaint();

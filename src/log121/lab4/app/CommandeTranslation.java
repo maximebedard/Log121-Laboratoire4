@@ -30,7 +30,7 @@ public class CommandeTranslation extends CommandeAbstraite implements MouseMotio
 
     @Override
     public void executer() {
-        modelePerspective.translater(dx, dy);        
+        modelePerspective.translater(dx, dy);
     }
 
     @Override
@@ -45,8 +45,8 @@ public class CommandeTranslation extends CommandeAbstraite implements MouseMotio
     }
     
     private void commandeTranslation(){
-    	Integer _dx = Integer.parseInt(JOptionPane.showInputDialog("Veuillez insérer la coordonnée x:"));
-        Integer _dy = Integer.parseInt(JOptionPane.showInputDialog("Veuillez insérer la coordonnée y:"));
+    	Integer _dx = Integer.parseInt(JOptionPane.showInputDialog("Veuillez inserer la coordonnee de x:"));
+        Integer _dy = Integer.parseInt(JOptionPane.showInputDialog("Veuillez inserer la coordonnee de y:"));
         
         if(_dx != null && _dy != null){
         	this.dx = _dx;
@@ -60,11 +60,15 @@ public class CommandeTranslation extends CommandeAbstraite implements MouseMotio
 		Integer _dy = arg0.getY();
 		
 		if(_dx != null && _dy != null){
+			/*int x = _dx-this.dx;
+			int y = _dy-this.dy;
+			System.out.println( x + " : " + y);*/
+			System.out.println(_dx + " ;" + _dy);
 			this.dx = _dx;
 			this.dy = _dy;
 		}
 		
-		//super.actionPerformed()
+		GestionnaireCommandes.getInstance().executer(this);
 	}
 
 	@Override
