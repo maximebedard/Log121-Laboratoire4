@@ -2,8 +2,12 @@ package log121.lab4.app;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
-public class CommandeZoom extends CommandeAbstraite {
+import log121.lab4.api.IConstantes;
+
+public class CommandeZoom extends CommandeAbstraite implements MouseWheelListener{
 
     private final ModelePerspective modelePerspective;
     private int increment;
@@ -21,7 +25,7 @@ public class CommandeZoom extends CommandeAbstraite {
 
     @Override
     public void executer() {
-        modelePerspective.setZoom(modelePerspective.getZoom() + increment);
+        modelePerspective.setZoom((int)(IConstantes.GRANDEUR_IMAGE * ((double)increment/100)));
     }
 
     @Override
@@ -44,5 +48,15 @@ public class CommandeZoom extends CommandeAbstraite {
     	if(_increment != null)
     		this.increment = _increment;
     }
+
+	@Override
+	public void mouseWheelMoved(MouseWheelEvent e) {
+		if(e == null) return;
+		
+		if(e.getPreciseWheelRotation() == -1)
+			modelePerspective.setZoom(modelePerspective.getZoom()-10);
+		else if(e.getPreciseWheelRotation() == 1)
+			modelePerspective.setZoom(modelePerspective.getZoom()+10);
+	}
 
 }

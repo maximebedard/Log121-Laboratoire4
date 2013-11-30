@@ -39,7 +39,11 @@ public class ControleurPrincipal extends JFrame {
     }
 
     private void initListeners() {
-        vueTranslation.addMouseMotionListener(new CommandeTranslation(modelePerspective));
+    	CommandeTranslation commandTranslation = new CommandeTranslation(modelePerspective);
+    	vueTranslation.addMouseListener(commandTranslation);
+        vueTranslation.addMouseMotionListener(commandTranslation);    
+        
+        vueZoom.addMouseWheelListener(new CommandeZoom(modelePerspective));
     }
 
     private void initVueModel() {

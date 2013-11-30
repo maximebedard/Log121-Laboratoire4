@@ -17,7 +17,7 @@ public class ModelePerspective extends Modele {
 
     private int y = 0;
 
-    private int zoom = 100;
+    private int zoom = 275;
 
     /**
      * Effectue la translation de la perspective

@@ -1,12 +1,12 @@
 package log121.lab4.app;
 
+import log121.lab4.api.IConstantes;
 import log121.lab4.api.Vue;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.Observable;
 
-public class VueZoom extends Vue {
+public class VueZoom extends Vue{
 
 	private static final long serialVersionUID = 8550598435588018968L;
 
@@ -20,6 +20,7 @@ public class VueZoom extends Vue {
         if(o instanceof ModeleImage)
         {
             image = ((ModeleImage)o).getImage();
+            zoom = IConstantes.GRANDEUR_IMAGE;
         }
 
         if(o instanceof ModelePerspective)
@@ -38,8 +39,7 @@ public class VueZoom extends Vue {
         super.paint(g);
 
         if(image == null) return;
-
-        g.drawImage(image, x, y, null);
+        g.drawImage(image, x, y, zoom, zoom, null);
         drawString(String.format("Zoom : %d", zoom),g);
     }
 }
