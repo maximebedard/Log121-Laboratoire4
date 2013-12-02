@@ -1,14 +1,12 @@
 package log121.lab4.app;
 
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import javax.swing.*;
+import java.awt.event.KeyEvent;
 
-public class CommandeAide extends CommandeAbstraite
-{
+public class CommandeAide extends Commande {
     public CommandeAide() {
-        super("app.frame.menus.help.about");
+        super("app.frame.menus.help.about", KeyEvent.VK_H);
     }
 
     @Override

@@ -17,17 +17,17 @@ public class ModelePerspective extends Modele {
 
     private int y = 0;
 
-    private int zoom = 275;
+    private int zoom = 100;
 
     /**
      * Effectue la translation de la perspective
+     *
      * @param dx deplacement en x
      * @param dy deplacement en y
      */
-    public void translater(int dx, int dy)
-    {
-        setX(dx);
-        setY(dy);
+    public void translater(int dx, int dy) {
+        setX(x + dx);
+        setY(y + dy);
     }
 
     /**
@@ -93,4 +93,7 @@ public class ModelePerspective extends Modele {
         setZoom(p.getZoom());
     }
 
+    public void incrementZoom(int zoomIncrement) {
+        setZoom(zoom + zoomIncrement);
+    }
 }

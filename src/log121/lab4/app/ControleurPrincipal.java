@@ -1,15 +1,11 @@
 package log121.lab4.app;
 
 import log121.lab4.api.Gardien;
-import log121.lab4.api.MenuAdapter;
 import log121.lab4.api.Modele;
 import log121.lab4.api.Vue;
 
 import javax.swing.*;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 import java.awt.*;
-import java.awt.event.*;
 import java.util.ArrayList;
 
 /**
@@ -30,7 +26,6 @@ public class ControleurPrincipal extends JFrame {
     private ArrayList<Modele> modeles = new ArrayList<Modele>();
 
     private MenuPrincipal menuPrincipal;
-    private JLayeredPane content;
 
     public ControleurPrincipal() {
         initVueModel();
@@ -39,10 +34,10 @@ public class ControleurPrincipal extends JFrame {
     }
 
     private void initListeners() {
-    	CommandeTranslation commandTranslation = new CommandeTranslation(modelePerspective);
-    	vueTranslation.addMouseListener(commandTranslation);
-        vueTranslation.addMouseMotionListener(commandTranslation);    
-        
+        CommandeTranslation commandTranslation = new CommandeTranslation(modelePerspective);
+        vueTranslation.addMouseListener(commandTranslation);
+        vueTranslation.addMouseMotionListener(commandTranslation);
+
         vueZoom.addMouseWheelListener(new CommandeZoom(modelePerspective));
     }
 
@@ -66,8 +61,8 @@ public class ControleurPrincipal extends JFrame {
         vues.add(vueTranslation);
         vues.add(vueGlobale);
 
-        for(Modele m : modeles)
-            for(Vue v : vues)
+        for (Modele m : modeles)
+            for (Vue v : vues)
                 m.addObserver(v);
     }
 
@@ -76,7 +71,7 @@ public class ControleurPrincipal extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle(ResourceManager.getResource("app.frame.title"));
         setLayout(new BorderLayout());
-        setSize(new Dimension(800,600));
+        setSize(new Dimension(800, 600));
 
         JPanel container = new JPanel();
         JPanel bottomPanel = new JPanel();
@@ -97,8 +92,7 @@ public class ControleurPrincipal extends JFrame {
     }
 
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         new ControleurPrincipal();
     }
 

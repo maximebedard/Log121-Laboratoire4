@@ -1,6 +1,6 @@
 package log121.lab4.api;
 
-import java.io.*;
+import java.io.Serializable;
 import java.util.Observable;
 
 public abstract class Modele extends Observable implements IOriginateur, ICloneable,

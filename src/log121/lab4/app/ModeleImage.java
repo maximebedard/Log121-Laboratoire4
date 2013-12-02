@@ -6,18 +6,14 @@ import log121.lab4.api.Modele;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
 public class ModeleImage extends Modele {
 
     private static final long serialVersionUID = -679409394432923243L;
 
-    private transient BufferedImage image;
+    private transient BufferedImage image = null;
 
-    private String chemin;
+    private String chemin = "";
 
     @Override
     public void restaurerMemento(Memento m) {
@@ -46,8 +42,7 @@ public class ModeleImage extends Modele {
         notifyObservers(chemin);
     }
 
-    private void loadImage()
-    {
+    private void loadImage() {
         try {
             image = ImageIO.read(new File(getChemin()));
         } catch (Exception e) {

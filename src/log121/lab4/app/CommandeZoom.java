@@ -1,31 +1,33 @@
 package log121.lab4.app;
 
+import log121.lab4.api.IConstantes;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-import log121.lab4.api.IConstantes;
-
-public class CommandeZoom extends CommandeAbstraite implements MouseWheelListener{
+public class CommandeZoom extends Commande implements MouseWheelListener {
 
     private final ModelePerspective modelePerspective;
     private int increment;
+    private final int INCREMENT_SIZE = 5;
 
-    public CommandeZoom(ModelePerspective modelePerspective)
-    {
+
+    public CommandeZoom(ModelePerspective modelePerspective) {
         this(modelePerspective, 0);
     }
 
     public CommandeZoom(ModelePerspective modelePerspective, int increment) {
-        super("app.frame.menus.transform.zoom");
+        super("app.frame.menus.transform.zoom", KeyEvent.VK_R);
         this.modelePerspective = modelePerspective;
         this.increment = increment;
     }
 
     @Override
     public void executer() {
-        modelePerspective.setZoom((int)(IConstantes.GRANDEUR_IMAGE * ((double)increment/100)));
+        modelePerspective.incrementZoom(increment);
     }
 
     @Override
@@ -36,27 +38,32 @@ public class CommandeZoom extends CommandeAbstraite implements MouseWheelListene
     @Override
     public void actionPerformed(ActionEvent e) {
         promptZoom();
-        if(increment == 0)
+        if (increment == 0)
             return;
 
         super.actionPerformed(e);
     }
 
     private void promptZoom() {
-    	Integer _increment = Integer.parseInt(JOptionPane.showInputDialog("Veuillez entree le poucentage de l'incrementation"));
-    	
-    	if(_increment != null)
-    		this.increment = _increment;
+        try
+        {
+            increment = Integer.parseInt(JOptionPane.showInputDialog("Veuillez entree le poucentage de l'incrementation"));
+        }
+        catch (NumberFormatException ex)
+        {
+            increment = 0;
+        }
     }
 
-	@Override
-	public void mouseWheelMoved(MouseWheelEvent e) {
-		if(e == null) return;
-		
-		if(e.getPreciseWheelRotation() == -1)
-			modelePerspective.setZoom(modelePerspective.getZoom()-10);
-		else if(e.getPreciseWheelRotation() == 1)
-			modelePerspective.setZoom(modelePerspective.getZoom()+10);
-	}
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent e) {
+        double rotation = e.getPreciseWheelRotation();
+        if (rotation < 0)
+            increment = -1 * INCREMENT_SIZE;
+        else
+            increment = INCREMENT_SIZE;
+
+        GestionnaireCommandes.getInstance().executer(this);
+    }
 
 }

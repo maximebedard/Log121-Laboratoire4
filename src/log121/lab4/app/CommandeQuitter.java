@@ -1,12 +1,12 @@
 package log121.lab4.app;
 
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.awt.event.KeyEvent;
 
-public class CommandeQuitter extends CommandeAbstraite {
+public class CommandeQuitter extends Commande {
 
     public CommandeQuitter() {
-        super("app.frame.menus.file.exit");
+        super("app.frame.menus.file.exit", KeyEvent.VK_Q);
     }
 
     @Override

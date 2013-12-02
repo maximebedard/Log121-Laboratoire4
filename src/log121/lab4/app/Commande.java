@@ -6,11 +6,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public abstract class CommandeAbstraite extends JMenuItem implements ICommande, ActionListener {
+public abstract class Commande extends JMenuItem implements ICommande, ActionListener {
 
-    CommandeAbstraite(String resourceKey)
-    {
+    Commande(String resourceKey, int keyCode) {
         setText(ResourceManager.getResource(resourceKey));
+        setAccelerator(KeyStroke.getKeyStroke(keyCode, ActionEvent.CTRL_MASK));
         addActionListener(this);
     }
 

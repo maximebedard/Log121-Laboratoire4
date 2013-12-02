@@ -10,7 +10,7 @@ public abstract class Vue extends JPanel implements Observer {
     private static Font DEFAULT_FONT = new Font("Serif", Font.PLAIN, 32);
 
     protected void drawString(String str, Graphics g) {
-        Graphics2D graphics = (Graphics2D)g;
+        Graphics2D graphics = (Graphics2D) g;
 
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graphics.setFont(DEFAULT_FONT);

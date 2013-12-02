@@ -2,7 +2,6 @@ package log121.lab4.app;
 
 import log121.lab4.api.Vue;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
@@ -11,7 +10,7 @@ public class VueGlobale extends Vue {
 
     private static final long serialVersionUID = -7558465286428238937L;
 
-    Image image;
+    private Image image;
 
     @Override
     public void update(Observable o, Object arg) {
@@ -22,6 +21,9 @@ public class VueGlobale extends Vue {
     }
 
     private void scaleImage(BufferedImage image) {
+
+        if(image == null)
+            return;
 
         double scaleFactor = Math.min(1d, getScaleFactorToFit(new Dimension(image.getWidth(), image.getHeight()), getSize()));
 
@@ -43,6 +45,7 @@ public class VueGlobale extends Vue {
     /**
      * Retourne un facteur utilisé pour mettre à l'echelle une image
      * Source : http://stackoverflow.com/questions/11959758/java-maintaining-aspect-ratio-of-jpanel-background-image/11959928#11959928
+     *
      * @param masterSize
      * @param targetSize
      * @return facteur de mise à l'échelle
@@ -57,6 +60,7 @@ public class VueGlobale extends Vue {
     /**
      * Retourne un facteur utilisé pour mettre à l'échelle une image afin que celle-ci fit dans le JPanel
      * Source : http://stackoverflow.com/questions/11959758/java-maintaining-aspect-ratio-of-jpanel-background-image/11959928#11959928
+     *
      * @param original
      * @param toFit
      * @return facteur de mise à l'échelle qui laisse des espaces

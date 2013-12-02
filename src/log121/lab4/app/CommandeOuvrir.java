@@ -2,16 +2,15 @@ package log121.lab4.app;
 
 
 import log121.lab4.api.Gardien;
-import log121.lab4.api.Modele;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.io.File;
+import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
-public class CommandeOuvrir extends CommandeAbstraite {
+public class CommandeOuvrir extends Commande {
 
     private final Gardien gardien;
     private final ModeleImage modeleImage;
@@ -23,7 +22,7 @@ public class CommandeOuvrir extends CommandeAbstraite {
     }
 
     public CommandeOuvrir(ModeleImage modeleImage, ModelePerspective modelePerspective, String chemin) {
-        super("app.frame.menus.file.load");
+        super("app.frame.menus.file.load", KeyEvent.VK_O);
         this.modelePerspective = modelePerspective;
         this.gardien = new Gardien(modeleImage);
         this.modeleImage = modeleImage;
@@ -37,22 +36,20 @@ public class CommandeOuvrir extends CommandeAbstraite {
 
         try {
 
-            if (chemin.matches(createRegex(formatImages)))
-            {
+            if (chemin.matches(createRegex(formatImages))) {
                 loadImage();
                 gardien.sauvegarder();
                 return;
             }
 
-            if (chemin.matches(createRegex(formatEtats)))
-            {
+            if (chemin.matches(createRegex(formatEtats))) {
                 loadEtat();
                 gardien.sauvegarder();
                 return;
             }
 
             JOptionPane.showMessageDialog(this, String.format("Le format de fichier est invalide. Formats valides : %s,%s",
-                formatImages, formatEtats));
+                    formatImages, formatEtats));
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getLocalizedMessage());
@@ -70,8 +67,8 @@ public class CommandeOuvrir extends CommandeAbstraite {
 
         ObjectInputStream ois = new ObjectInputStream(fis);
 
-        ModeleImage copieImage = (ModeleImage)ois.readObject();
-        ModelePerspective copiePerspective = (ModelePerspective)ois.readObject();
+        ModeleImage copieImage = (ModeleImage) ois.readObject();
+        ModelePerspective copiePerspective = (ModelePerspective) ois.readObject();
 
         ois.close();
         fis.close();
