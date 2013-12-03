@@ -1,8 +1,6 @@
 package log121.lab4.app;
 
 
-import log121.lab4.api.Gardien;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -12,21 +10,21 @@ import java.io.ObjectInputStream;
 
 public class CommandeOuvrir extends Commande {
 
-    private final Gardien gardien;
     private final ModeleImage modeleImage;
     private final ModelePerspective modelePerspective;
     private String chemin;
 
+    /**
+     * Constructeur de la commande ouvrir à partir d'un chemin existant
+     * @param modeleImage modele qui contient les informations sur l'image
+     * @param modelePerspective modele qui contient les informations sur la perspective
+     */
     public CommandeOuvrir(ModeleImage modeleImage, ModelePerspective modelePerspective) {
-        this(modeleImage, modelePerspective, null);
-    }
-
-    public CommandeOuvrir(ModeleImage modeleImage, ModelePerspective modelePerspective, String chemin) {
         super("app.frame.menus.file.load", KeyEvent.VK_O);
         this.modelePerspective = modelePerspective;
-        this.gardien = new Gardien(modeleImage);
+
         this.modeleImage = modeleImage;
-        this.chemin = chemin;
+        this.chemin = null;
     }
 
     @Override
@@ -38,13 +36,11 @@ public class CommandeOuvrir extends Commande {
 
             if (chemin.matches(createRegex(formatImages))) {
                 loadImage();
-                gardien.sauvegarder();
                 return;
             }
 
             if (chemin.matches(createRegex(formatEtats))) {
                 loadEtat();
-                gardien.sauvegarder();
                 return;
             }
 
@@ -57,10 +53,21 @@ public class CommandeOuvrir extends Commande {
         }
     }
 
+    /**
+     * Restore les paramètres par defauts des modèles et assigne le nouveau chemin au modele image
+     * @throws Exception
+     */
     private void loadImage() throws Exception {
+        modeleImage.initDefaults();
+        modelePerspective.initDefaults();
+
         modeleImage.setChemin(chemin);
     }
 
+    /**
+     * Restore l'application à partir d'un état sauvegardé précedemment
+     * @throws Exception
+     */
     private void loadEtat() throws Exception {
 
         FileInputStream fis = new FileInputStream(chemin);
@@ -78,6 +85,10 @@ public class CommandeOuvrir extends Commande {
 
     }
 
+    /**
+     * Retourne tous les formats de fichiers d'images supportés
+     * @return formats d'images supportés
+     */
     private static String getSupportedImageFormats() {
         String regex = "";
         for (String f : ImageIO.getReaderFormatNames())
@@ -86,10 +97,19 @@ public class CommandeOuvrir extends Commande {
         return regex.substring(0, regex.length() - 1);
     }
 
+    /**
+     * Retourne tous les formats de fichiers d'états
+     * @return formats d'états supportés
+     */
     private static String getSupportedStateFormats() {
         return "lab4";
     }
 
+    /**
+     * Retourne l'exression régulière qui match les extensions
+     * @param formats formats d'images
+     * @return l'expression régulière
+     */
     private String createRegex(String formats) {
         return ".*\\.(" + formats.replace(',', '|') + ")$";
     }
@@ -108,6 +128,9 @@ public class CommandeOuvrir extends Commande {
         super.actionPerformed(e);
     }
 
+    /**
+     * Affiche le file chooser pour selectionner un fichier
+     */
     private void promptChemin() {
         JFileChooser fileChooser = new JFileChooser();
 

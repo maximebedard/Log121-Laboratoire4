@@ -15,15 +15,16 @@ public class CommandeSauvegarder extends Commande {
     private final ModelePerspective modelePerspective;
     private String chemin;
 
+    /**
+     * Constructeur de la commande sauvegarder
+     * @param modeleImage modele qui contient les informations sur l'image
+     * @param modelePerspective modele qui contient les informations sur la perspective
+     */
     public CommandeSauvegarder(ModeleImage modeleImage, ModelePerspective modelePerspective) {
-        this(modeleImage, modelePerspective, null);
-    }
-
-    public CommandeSauvegarder(ModeleImage modeleImage, ModelePerspective modelePerspective, String chemin) {
         super("app.frame.menus.file.save", KeyEvent.VK_S);
         this.modeleImage = modeleImage;
         this.modelePerspective = modelePerspective;
-        this.chemin = chemin;
+        this.chemin = null;
     }
 
     @Override
@@ -42,7 +43,9 @@ public class CommandeSauvegarder extends Commande {
         }
     }
 
-
+    /**
+     * Affiche un file chooser pour choisir la destination
+     */
     public void promptChemin() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setAcceptAllFileFilterUsed(false);

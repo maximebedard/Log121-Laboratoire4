@@ -5,6 +5,9 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 public class CommandeAide extends Commande {
+    /**
+     * Constructeur de la commande qui affiche l'aide
+     */
     public CommandeAide() {
         super("app.frame.menus.help.about", KeyEvent.VK_H);
     }

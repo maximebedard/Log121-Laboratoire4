@@ -8,6 +8,12 @@ public abstract class Modele extends Observable implements IOriginateur, IClonea
 
     private static final long serialVersionUID = -8014118939667006520L;
 
+    protected Modele(){
+        initDefaults();
+    }
+
+    public abstract void initDefaults();
+
 
     @Override
     public Memento creerMemento() {

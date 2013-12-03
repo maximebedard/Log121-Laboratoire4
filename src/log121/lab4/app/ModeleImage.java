@@ -11,6 +11,8 @@ public class ModeleImage extends Modele {
 
     private static final long serialVersionUID = -679409394432923243L;
 
+    private static final String DEFAULT_CHEMIN = "";
+
     private transient BufferedImage image = null;
 
     private String chemin = "";
@@ -36,6 +38,9 @@ public class ModeleImage extends Modele {
     }
 
     public void setChemin(String chemin) {
+        if(this.chemin != null && this.chemin.equals(chemin))
+            return;
+
         this.chemin = chemin;
         loadImage();
         setChanged();
@@ -51,4 +56,8 @@ public class ModeleImage extends Modele {
 
     }
 
+    @Override
+    public void initDefaults() {
+        setChemin(DEFAULT_CHEMIN);
+    }
 }

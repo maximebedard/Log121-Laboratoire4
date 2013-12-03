@@ -1,7 +1,5 @@
 package log121.lab4.app;
 
-import log121.lab4.api.IConstantes;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -11,18 +9,13 @@ import java.awt.event.MouseWheelListener;
 public class CommandeZoom extends Commande implements MouseWheelListener {
 
     private final ModelePerspective modelePerspective;
-    private int increment;
-    private final int INCREMENT_SIZE = 5;
 
+    private int increment;
 
     public CommandeZoom(ModelePerspective modelePerspective) {
-        this(modelePerspective, 0);
-    }
-
-    public CommandeZoom(ModelePerspective modelePerspective, int increment) {
         super("app.frame.menus.transform.zoom", KeyEvent.VK_R);
         this.modelePerspective = modelePerspective;
-        this.increment = increment;
+        this.increment = 0;
     }
 
     @Override
@@ -38,12 +31,12 @@ public class CommandeZoom extends Commande implements MouseWheelListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         promptZoom();
-        if (increment == 0)
-            return;
-
         super.actionPerformed(e);
     }
 
+    /**
+     * Affiche un dialog pour entrer l'incrément
+     */
     private void promptZoom() {
         try
         {
@@ -58,6 +51,7 @@ public class CommandeZoom extends Commande implements MouseWheelListener {
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
         double rotation = e.getPreciseWheelRotation();
+        int INCREMENT_SIZE = 5;
         if (rotation < 0)
             increment = -1 * INCREMENT_SIZE;
         else

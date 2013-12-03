@@ -17,7 +17,7 @@ public abstract class Vue extends JPanel implements Observer {
 
         FontMetrics fontMetrics = graphics.getFontMetrics(DEFAULT_FONT);
         Rectangle2D rect = fontMetrics.getStringBounds(str, graphics);
-        graphics.drawString(str, (int) (this.getWidth() - rect.getWidth()), (int) (this.getHeight() - fontMetrics.getAscent()));
+        graphics.drawString(str, (int) (this.getWidth() - rect.getWidth()), this.getHeight() - fontMetrics.getAscent());
 
     }
 

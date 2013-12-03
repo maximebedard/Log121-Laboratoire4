@@ -7,18 +7,12 @@ import javax.swing.event.MenuEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.NoSuchElementException;
 
 public class MenuPrincipal extends JMenuBar {
 
     private final ModeleImage modeleImage;
     private final ModelePerspective modelePerspective;
-    private JMenu fichier;
-
-    private JMenu edition;
-
-    private JMenu transformation;
-
-    private JMenu aide;
 
 
     private static final String MENU_AIDE_TITRE = "app.frame.menus.help.title",
@@ -40,7 +34,7 @@ public class MenuPrincipal extends JMenuBar {
     }
 
     private void creerMenuAide() {
-        aide = creerMenu(
+        JMenu aide = creerMenu(
                 MENU_AIDE_TITRE,
                 new JMenuItem[]{
                         new CommandeAide()
@@ -50,7 +44,7 @@ public class MenuPrincipal extends JMenuBar {
     }
 
     private void creerMenuTransformation() {
-        transformation = creerMenu(
+        JMenu transformation = creerMenu(
                 MENU_TRANSFORM_TITLE,
                 new JMenuItem[]{
                         new CommandeTranslation(modelePerspective),
@@ -67,7 +61,7 @@ public class MenuPrincipal extends JMenuBar {
 
         final JMenuItem redo = new JMenuItem(ResourceManager.getResource(MENU_EDITION_REDO_TITLE));
         redo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, ActionEvent.CTRL_MASK));
-        edition = creerMenu(
+        JMenu edition = creerMenu(
                 MENU_EDITION_TITLE,
                 new JMenuItem[]{
                         undo,
@@ -95,14 +89,28 @@ public class MenuPrincipal extends JMenuBar {
         undo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GestionnaireCommandes.getInstance().annuler();
+                try
+                {
+                    GestionnaireCommandes.getInstance().annuler();
+                }
+                catch (NoSuchElementException ex)
+                {
+                    // do nothing
+                }
             }
         });
 
         redo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GestionnaireCommandes.getInstance().refaire();
+                try
+                {
+                    GestionnaireCommandes.getInstance().refaire();
+                }
+                catch (NoSuchElementException ex)
+                {
+                    // do nothing
+                }
             }
         });
 
@@ -110,7 +118,7 @@ public class MenuPrincipal extends JMenuBar {
     }
 
     private void creerMenuFichier() {
-        fichier = creerMenu(
+        JMenu fichier = creerMenu(
                 MENU_FICHIER_TITLE,
                 new JMenuItem[]{
                         new CommandeOuvrir(modeleImage, modelePerspective),

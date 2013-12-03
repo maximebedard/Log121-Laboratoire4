@@ -1,6 +1,5 @@
 package log121.lab4.app;
 
-import log121.lab4.api.IConstantes;
 import log121.lab4.api.Vue;
 
 import java.awt.*;

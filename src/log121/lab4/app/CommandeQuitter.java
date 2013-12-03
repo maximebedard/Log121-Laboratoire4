@@ -5,6 +5,9 @@ import java.awt.event.KeyEvent;
 
 public class CommandeQuitter extends Commande {
 
+    /**
+     * Constructeur de la commande quitter
+     */
     public CommandeQuitter() {
         super("app.frame.menus.file.exit", KeyEvent.VK_Q);
     }

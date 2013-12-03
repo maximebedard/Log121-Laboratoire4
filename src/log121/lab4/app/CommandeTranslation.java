@@ -16,15 +16,16 @@ public class CommandeTranslation extends Commande implements MouseMotionListener
     private int x_before;
     private int y_before;
 
+    /**
+     * Constructeur de la commande translation
+     * @param modelePerspective modèle qui contient les informations sur la perspective
+     *
+     */
     public CommandeTranslation(ModelePerspective modelePerspective) {
-        this(modelePerspective, 0, 0);
-    }
-
-    public CommandeTranslation(ModelePerspective modelePerspective, int dx, int dy) {
         super("app.frame.menus.transform.translate", KeyEvent.VK_T);
         this.modelePerspective = modelePerspective;
-        this.dx = dx;
-        this.dy = dy;
+        this.dx = 0;
+        this.dy = 0;
 
     }
 
@@ -40,14 +41,14 @@ public class CommandeTranslation extends Commande implements MouseMotionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        commandeTranslation();
-        if(dx == 0 && dy == 0)
-            return;
-
+        promptTranslation();
         super.actionPerformed(e);
     }
 
-    private void commandeTranslation() {
+    /**
+     * Affiche des dialogs pour insérer les valeurs
+     */
+    private void promptTranslation() {
 
         try
         {

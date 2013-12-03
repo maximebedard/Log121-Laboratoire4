@@ -5,19 +5,19 @@ import log121.lab4.api.Modele;
 
 public class ModelePerspective extends Modele {
 
-    public static final String X_ATTR = "X";
-
-    public static final String Y_ATTR = "Y";
-
-    public static final String ZOOM_ATTR = "Zoom";
-
     private static final long serialVersionUID = 2693092317130168995L;
 
-    private int x = 0;
+    private static final int DEFAULT_X = 0;
 
-    private int y = 0;
+    private static final int DEFAULT_Y = 0;
 
-    private int zoom = 100;
+    private static final int DEFAULT_ZOOM = 100;
+
+    private int x;
+
+    private int y;
+
+    private int zoom;
 
     /**
      * Effectue la translation de la perspective
@@ -94,6 +94,16 @@ public class ModelePerspective extends Modele {
     }
 
     public void incrementZoom(int zoomIncrement) {
-        setZoom(zoom + zoomIncrement);
+        if(zoom + zoomIncrement < 0)
+            setZoom(0);
+        else
+            setZoom(zoom + zoomIncrement);
+    }
+
+    @Override
+    public void initDefaults() {
+        setX(DEFAULT_X);
+        setY(DEFAULT_Y);
+        setZoom(DEFAULT_ZOOM);
     }
 }

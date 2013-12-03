@@ -2,6 +2,7 @@ package log121.lab4.app;
 
 import log121.lab4.api.Vue;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
@@ -10,35 +11,37 @@ public class VueGlobale extends Vue {
 
     private static final long serialVersionUID = -7558465286428238937L;
 
-    private Image image;
+    private Image image = null;
 
     @Override
     public void update(Observable o, Object arg) {
         if (o instanceof ModeleImage) {
-            scaleImage(((ModeleImage) o).getImage());
-            repaint();
+            ModeleImage modeleImage = ((ModeleImage) o);
+            BufferedImage img = modeleImage.getImage();
+
+            image = scaleImage(this, img);
         }
+
+        repaint();
     }
 
-    private void scaleImage(BufferedImage image) {
+    /**
+     * Mise à lécelle de l'image
+     * @param comp composante ou sera dessiné l'image
+     * @param image image à haute/faible résolution
+     * @return l'image mise à l'échelle
+     */
+    private static Image scaleImage(JComponent comp, BufferedImage image) {
 
         if(image == null)
-            return;
+            return null;
 
-        double scaleFactor = Math.min(1d, getScaleFactorToFit(new Dimension(image.getWidth(), image.getHeight()), getSize()));
+        double scaleFactor = Math.min(1d, getScaleFactorToFit(new Dimension(image.getWidth(), image.getHeight()), comp.getSize()));
 
         int scaleWidth = (int) Math.round(image.getWidth() * scaleFactor);
         int scaleHeight = (int) Math.round(image.getHeight() * scaleFactor);
 
-        Image scaled = image.getScaledInstance(scaleWidth, scaleHeight, Image.SCALE_SMOOTH);
-
-        int width = getWidth() - 1;
-        int height = getHeight() - 1;
-
-        int x = (width - scaled.getWidth(this)) / 2;
-        int y = (height - scaled.getHeight(this)) / 2;
-
-        this.image = scaled;
+        return image.getScaledInstance(scaleWidth, scaleHeight, Image.SCALE_SMOOTH);
 
     }
 
@@ -50,7 +53,7 @@ public class VueGlobale extends Vue {
      * @param targetSize
      * @return facteur de mise à l'échelle
      */
-    private double getScaleFactor(int masterSize, int targetSize) {
+    private static double getScaleFactor(int masterSize, int targetSize) {
 
         return masterSize > targetSize ? (double) targetSize / (double) masterSize :
                 (double) targetSize / (double) masterSize;
@@ -65,7 +68,7 @@ public class VueGlobale extends Vue {
      * @param toFit
      * @return facteur de mise à l'échelle qui laisse des espaces
      */
-    private double getScaleFactorToFit(Dimension original, Dimension toFit) {
+    private static double getScaleFactorToFit(Dimension original, Dimension toFit) {
 
         double dScale = 1d;
 

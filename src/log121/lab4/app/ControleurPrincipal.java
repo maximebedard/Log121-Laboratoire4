@@ -22,10 +22,8 @@ public class ControleurPrincipal extends JFrame {
     private ModeleImage modeleImage;
     private ModelePerspective modelePerspective;
 
-    private ArrayList<Vue> vues = new ArrayList<Vue>();
-    private ArrayList<Modele> modeles = new ArrayList<Modele>();
-
-    private MenuPrincipal menuPrincipal;
+    private final ArrayList<Vue> vues = new ArrayList<Vue>();
+    private final ArrayList<Modele> modeles = new ArrayList<Modele>();
 
     public ControleurPrincipal() {
         initVueModel();
@@ -84,7 +82,7 @@ public class ControleurPrincipal extends JFrame {
         container.add(vueGlobale);
         container.add(bottomPanel);
 
-        menuPrincipal = new MenuPrincipal(modeleImage, modelePerspective);
+        MenuPrincipal menuPrincipal = new MenuPrincipal(modeleImage, modelePerspective);
 
         add(menuPrincipal, BorderLayout.NORTH);
         add(container, BorderLayout.CENTER);

@@ -92,7 +92,7 @@ public final class GestionnaireCommandes {
     /**
      * Retourne vrai si le gestionnaire ne peut pas annuler de commandes
      *
-     * @return
+     * @return vrai si la pile est vide
      */
     public boolean annulerVide() {
         return undoStack.empty();
@@ -101,7 +101,7 @@ public final class GestionnaireCommandes {
     /**
      * Retourne vrai si le gestionnaire ne peut pas annuler de commandes
      *
-     * @return
+     * @return vrai si la pile est vide
      */
     public boolean refaireVide() {
         return redoStack.empty();
@@ -110,7 +110,7 @@ public final class GestionnaireCommandes {
     /**
      * Ajoute un gardien dans la liste
      *
-     * @param gardien
+     * @param gardien gardien à ajouter
      */
     public void ajouterGardien(Gardien gardien) {
         gardiens.add(gardien);
@@ -119,7 +119,7 @@ public final class GestionnaireCommandes {
     /**
      * Enleve un gardien de la liste
      *
-     * @param gardien
+     * @param gardien gardien à enlever
      */
     public void enleverGardien(Gardien gardien) {
         gardiens.remove(gardien);
