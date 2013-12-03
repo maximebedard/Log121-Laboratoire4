@@ -1,3 +1,15 @@
+/******************************************************
+ Cours:  LOG121
+ Projet: Laboratoire 4
+ Nom du fichier: MenuAdapter.java
+ Date créé: 2013-12-03
+ *******************************************************
+ Historique des modifications
+ *******************************************************
+ *@author Maxime Bédard
+2013-12-03 Version initiale
+ *******************************************************/
+
 package log121.lab4.api;
 
 import javax.swing.event.MenuEvent;
